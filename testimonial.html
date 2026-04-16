@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Témoignages — Aquapro Plombier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── Swiper témoignages ── */
+    .testi-swiper-wrap {
+      position: relative;
+      padding: 0 0 56px;
+    }
+    .testi-swiper-wrap .swiper {
+      padding: 16px 8px 8px;
+    }
+    .testi-swiper-wrap .testi-item {
+      background: #fff;
+      border: 1px solid var(--border, #dde5f5);
+      border-radius: 4px;
+      padding: 0;
+      text-align: center;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .testi-swiper-wrap .testi-text {
+      background: #f0f4fc;
+      padding: 28px 24px;
+      flex: 1;
+      position: relative;
+    }
+    .testi-swiper-wrap .testi-text::after {
+      content: '';
+      position: absolute;
+      bottom: -14px; left: 50%; transform: translateX(-50%);
+      width: 0; height: 0;
+      border: 7px solid;
+      border-color: #f0f4fc transparent transparent transparent;
+    }
+    .testi-swiper-wrap .testi-text p {
+      font-size: .9rem;
+      color: #64748b;
+      line-height: 1.7;
+      font-style: italic;
+      margin: 0;
+    }
+    .testi-swiper-wrap .testi-bottom {
+      padding: 28px 16px 24px;
+    }
+    .testi-swiper-wrap .testi-item img {
+      width: 76px; height: 76px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 12px;
+      border: 4px solid #f0f4fc;
+    }
+    .testi-swiper-wrap .testi-stars {
+      color: #e85d1a;
+      font-size: .95rem;
+      letter-spacing: 3px;
+      margin-bottom: 8px;
+    }
+    .testi-swiper-wrap h5 {
+      font-size: .95rem;
+      font-weight: 700;
+      margin-bottom: 2px;
+      font-family: 'Outfit', sans-serif;
+    }
+    .testi-swiper-wrap .testi-job {
+      font-size: .8rem;
+      color: #64748b;
+      margin: 0;
+    }
+    /* Flèches */
+    .testi-swiper-wrap .swiper-button-next,
+    .testi-swiper-wrap .swiper-button-prev {
+      width: 44px; height: 44px;
+      background: #2f66c6;
+      color: #fff;
+      border-radius: 0;
+      top: 50%;
+    }
+    .testi-swiper-wrap .swiper-button-next::after,
+    .testi-swiper-wrap .swiper-button-prev::after {
+      font-size: 14px;
+      font-weight: 900;
+    }
+    .testi-swiper-wrap .swiper-button-next:hover,
+    .testi-swiper-wrap .swiper-button-prev:hover {
+      background: #1e4fa0;
+    }
+    /* Pagination */
+    .testi-swiper-wrap .swiper-pagination-bullet {
+      background: #2f66c6;
+      opacity: .35;
+      width: 10px; height: 10px;
+    }
+    .testi-swiper-wrap .swiper-pagination-bullet-active {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="container topbar-inner">
+    <div class="topbar-logo"><a href="index.html">Aquapro Plombier</a></div>
+    <div class="topbar-info">
+      <span><i class="fa fa-map-marker-alt"></i> 15 ter Chemin de Meaux, 93360 Neuilly Plaisance</span>
+      <span><i class="fa fa-envelope"></i> contact@aquaproplombier.fr</span>
+      <div class="topbar-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container navbar-inner">
+    <a href="index.html" class="nav-logo">Aquapro Plombier</a>
+    <button class="burger" id="burger"><i class="fa fa-bars"></i></button>
+    <div class="nav-menu" id="nav-menu">
+      <a href="index.html" class="nav-link">Accueil</a>
+      <a href="about.html" class="nav-link">À propos</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <div class="nav-dropdown">
+        <a href="#" class="nav-link active">Pages <i class="fa fa-angle-down"></i></a>
+        <div class="dropdown-panel">
+          <a href="booking.html">Réservation</a>
+          <a href="team.html">Techniciens</a>
+          <a href="testimonial.html">Témoignages</a>
+          <a href="404.html">Page 404</a>
+        </div>
+      </div>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+    <div class="nav-phone">
+      <div class="nav-phone-icon"><i class="fa fa-phone-alt"></i></div>
+      <div><p>Urgence 7j/7</p><h5>06.77.21.87.87</h5></div>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <h1>Témoignages</h1>
+    <nav class="breadcrumb">
+      <a href="index.html">Accueil</a><span>/</span><span>Témoignages</span>
+    </nav>
+  </div>
+</div>
+
+<!-- TESTIMONIALS SWIPER -->
+<section class="section-pad">
+  <div class="container">
+
+    <div class="text-center mb-5">
+      <h6 class="label-upper">Témoignages</h6>
+      <h1 class="section-title">Ce que disent nos clients !</h1>
+    </div>
+
+    <div class="testi-swiper-wrap">
+      <div class="swiper myTestiSwiper">
+        <div class="swiper-wrapper">
+
+          <div class="swiper-slide">
+            <div class="testi-item">
+              <div class="testi-text"><p>"Intervention en moins d'une heure un dimanche soir pour une fuite catastrophique. Prix annoncé respecté à l'euro près. Je recommande vivement !"</p></div>
+              <div class="testi-bottom">
+                <img src="img/testimonial-1.jpg" alt="Marie-Louise D.">
+                <div class="testi-stars">★★★★★</div>
+                <h5>Marie-Louise D.</h5>
+                <p class="testi-job">Paris 11e</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="testi-item">
+              <div class="testi-text"><p>"Débouchage complet de ma cuisine et salle de bain en 45 minutes. Propre, efficace, professionnel. Je recommande sans hésiter à tout mon entourage."</p></div>
+              <div class="testi-bottom">
+                <img src="img/testimonial-2.jpg" alt="Jean-Karl M.">
+                <div class="testi-stars">★★★★★</div>
+                <h5>Jean-Karl M.</h5>
+                <p class="testi-job">Versailles</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="testi-item">
+              <div class="testi-text"><p>"Remplacement du chauffe-eau en un seul passage, sans dégâts. Excellent rapport qualité-prix et équipe très sympathique et professionnelle."</p></div>
+              <div class="testi-bottom">
+                <img src="img/testimonial-3.jpg" alt="Sophie C.">
+                <div class="testi-stars">★★★★★</div>
+                <h5>Sophie C.</h5>
+                <p class="testi-job">Boulogne-Billancourt</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="testi-item">
+              <div class="testi-text"><p>"Très rapide et efficace. Technicien ponctuel, travail soigné, prix honnête. Je fais appel à Aquapro pour tous mes besoins en plomberie."</p></div>
+              <div class="testi-bottom">
+                <img src="img/testimonial-4.jpg" alt="Pierre B.">
+                <div class="testi-stars">★★★★★</div>
+                <h5>Pierre B.</h5>
+                <p class="testi-job">Neuilly-sur-Seine</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="testi-item">
+              <div class="testi-text"><p>"Une urgence un samedi matin, réglée en deux heures chrono. Équipe sérieuse, matériel propre, aucune mauvaise surprise sur la facture."</p></div>
+              <div class="testi-bottom">
+                <img src="img/testimonial-1.jpg" alt="François M.">
+                <div class="testi-stars">★★★★★</div>
+                <h5>François M.</h5>
+                <p class="testi-job">Neuilly Plaisance</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="testi-item">
+              <div class="testi-text"><p>"Devis clair, intervention rapide, résultat impeccable. Enfin un plombier sur lequel on peut compter. Je les recommande sans réserve à mes voisins."</p></div>
+              <div class="testi-bottom">
+                <img src="img/testimonial-2.jpg" alt="Isabelle T.">
+                <div class="testi-stars">★★★★★</div>
+                <h5>Isabelle T.</h5>
+                <p class="testi-job">Rosny-sous-Bois</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Flèches -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Adresse</h4>
+        <p><i class="fa fa-map-marker-alt"></i> 15 ter Chemin de Meaux, 93360 Neuilly Plaisance</p>
+        <p><i class="fa fa-phone-alt"></i> 06.77.21.87.87</p>
+        <p><i class="fa fa-envelope"></i> contact@aquaproplombier.fr</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Horaires</h4>
+        <h6>Lundi — Vendredi :</h6>
+        <p class="mb-4">8h00 — 20h00</p>
+        <h6>Samedi — Dimanche :</h6>
+        <p>Urgences uniquement</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <a class="footer-link" href="#">Réparation fuites</a>
+        <a class="footer-link" href="#">Débouchage</a>
+        <a class="footer-link" href="#">Chauffe-eau</a>
+        <a class="footer-link" href="#">Plomberie neuve</a>
+        <a class="footer-link" href="#">Urgences</a>
+      </div>
+      <div>
+        <h4>Newsletter</h4>
+        <p>Restez informé de nos offres et conseils plomberie.</p>
+        <div class="newsletter-wrap">
+          <input type="email" placeholder="Votre email">
+          <button>S'inscrire</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <span>© 2026 Aquapro Plombier. Tous droits réservés.</span>
+
+    <span>
+      Site conçu et administré par
+      <a href="https://cmd-solutions.fr" target="_blank">CMD Solutions</a>
+    </span>
+
+    <span>
+      <a href="mentions-legales.html" target="_blank">Mentions légales</a>
+      ·
+      <a href="politique-de-confidentialite.html" target="_blank">Politique de confidentialité</a>
+    </span>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="back-to-top" id="back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="main.js"></script>
+<script>
+  new Swiper('.myTestiSwiper', {
+    loop: true,
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+    },
+    speed: 700,
+    slidesPerView: 1,
+    spaceBetween: 24,
+    centeredSlides: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+      600: { slidesPerView: 2 },
+      992: { slidesPerView: 3 },
+    }
+  });
+</script>
+</body>
+</html>

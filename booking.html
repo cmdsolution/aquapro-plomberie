@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Réservation — Aquapro Plombier</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="container topbar-inner">
+
+    <div class="logo">
+      <a href="index.html">
+        <img src="img/logo.webp" alt="Aquapro Plombier">
+      </a>
+    </div>
+
+ <div class="topbar-info">
+      <span><i class="fa fa-map-marker-alt"></i> 15 ter Chemin de Meaux, Neuilly Plaisance</span>
+      <span><i class="fa fa-envelope"></i> contact@aquaproplombier.fr</span>
+
+      <div class="topbar-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container navbar-inner">
+
+    <a href="index.html" class="nav-logo">Aquapro Plombier</a>
+
+    <button class="burger" id="burger">
+      <i class="fa fa-bars"></i>
+    </button>
+
+    <div class="nav-menu" id="nav-menu">
+
+      <a href="index.html" class="nav-link">Accueil</a>
+      <a href="about.html" class="nav-link">À propos</a>
+      <a href="services.html" class="nav-link">Services</a>
+
+      <div class="nav-dropdown">
+        <a href="#" class="nav-link active">Pages <i class="fa fa-angle-down"></i></a>
+        <div class="dropdown-panel">
+          <a href="booking.html">Réservation</a>
+          <a href="team.html">Techniciens</a>
+          <a href="testimonial.html">Témoignages</a>
+          <a href="404.html">Page 404</a>
+        </div>
+      </div>
+
+      <a href="contact.html" class="nav-link">Contact</a>
+
+    </div>
+
+    <div class="nav-phone">
+      <div class="nav-phone-icon">
+        <i class="fa fa-phone-alt"></i>
+      </div>
+      <div>
+        <p>Urgence 7j/7</p>
+        <h5>06.77.21.87.87</h5>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="container">
+    <h1>Réservation</h1>
+    <nav class="breadcrumb">
+      <a href="index.html">Accueil</a>
+      <span>/</span>
+      <span>Réservation</span>
+    </nav>
+  </div>
+</div>
+
+<!-- BOOKING -->
+<section class="booking-page-wrap">
+  <div class="container">
+
+    <div class="booking-page-grid">
+
+      <div class="fade-in">
+
+        <h6 class="label-upper">Planifiez en 2 minutes</h6>
+
+        <h2 class="section-title">Réservez votre intervention</h2>
+
+        <p class="text-muted mb-4">
+          Notre équipe vous rappelle sous 30 minutes pour confirmer le créneau et vous communiquer un devis gratuit.
+        </p>
+
+        <div class="booking-features">
+
+          <div class="b-feature">
+            <div class="b-feat-icon">📋</div>
+            <div>
+              <strong>Devis gratuit avant intervention</strong>
+              <p>Aucun frais de déplacement pour le devis.</p>
+            </div>
+          </div>
+
+          <div class="b-feature">
+            <div class="b-feat-icon">⏱️</div>
+            <div>
+              <strong>Rappel sous 30 minutes</strong>
+              <p>Lun–Ven 8h–20h. Urgences 7j/7.</p>
+            </div>
+          </div>
+
+          <div class="b-feature">
+            <div class="b-feat-icon">🔒</div>
+            <div>
+              <strong>Prix fixé à l'avance</strong>
+              <p>Devis accepté = prix garanti.</p>
+            </div>
+          </div>
+
+          <div class="b-feature">
+            <div class="b-feat-icon">✅</div>
+            <div>
+              <strong>Garantie</strong>
+              <p>Pièces et main-d'œuvre garanties.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- FORM -->
+      <div class="booking-page-form fade-in">
+
+        <h3>Votre demande d'intervention</h3>
+
+        <form id="booking-page-form">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Prénom et nom</label>
+              <input type="text" placeholder="Jean Dupont" required>
+            </div>
+
+            <div class="form-group">
+              <label>Téléphone</label>
+              <input type="tel" placeholder="06 12 34 56 78" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="jean@email.fr" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Type d'intervention</label>
+              <select>
+                <option disabled selected>Choisir un service</option>
+                <option>Réparation de fuite</option>
+                <option>Débouchage</option>
+                <option>Chauffe-eau</option>
+                <option>Plomberie neuve</option>
+                <option>Urgence</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Date souhaitée</label>
+              <input type="date">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Adresse d'intervention</label>
+            <input type="text" placeholder="123 rue de la Paix, 75001 Paris" required>
+          </div>
+
+          <div class="form-group">
+            <label>Description du problème</label>
+            <textarea placeholder="Décrivez brièvement le problème..."></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">
+            Réserver maintenant
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>Adresse</h4>
+          <p><i class="fa fa-map-marker-alt"></i> 15 ter Chemin de Meaux, 93360 Neuilly Plaisance</p>
+          <p><i class="fa fa-phone-alt"></i> 06.77.21.87.87</p>
+          <p><i class="fa fa-envelope"></i> contact@aquaproplombier.fr</p>
+          <div class="footer-social">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Horaires</h4>
+          <h6>Lundi — Vendredi :</h6>
+          <p class="mb-4">8h00 — 20h00</p>
+          <h6>Samedi — Dimanche :</h6>
+          <p>Urgences uniquement</p>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <a class="footer-link" href="#">Réparation fuites</a>
+          <a class="footer-link" href="#">Débouchage</a>
+          <a class="footer-link" href="#">Chauffe-eau</a>
+          <a class="footer-link" href="#">Plomberie neuve</a>
+          <a class="footer-link" href="#">Urgences</a>
+        </div>
+        <div>
+          <h4>Newsletter</h4>
+          <p>Restez informé de nos offres et conseils plomberie.</p>
+          <div class="newsletter-wrap">
+            <input type="email" placeholder="Votre email">
+            <button>S'inscrire</button>
+          </div>
+        </div>
+      </div>
+    </div>
+<div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+         <span>© 2026 Aquapro Plombier. Tous droits réservés.</span>
+
+    <span>
+      Site conçu et administré par
+      <a href="https://cmd-solutions.fr" target="_blank">CMD Solutions</a>
+    </span>
+
+    <span>
+      <a href="mentions-legales.html" target="_blank">Mentions légales</a>
+      ·
+      <a href="politique-de-confidentialite.html" target="_blank">Politique de confidentialité</a>
+    </span>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top" id="back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+  <script src="main.js"></script>
+</body>
+</html>
