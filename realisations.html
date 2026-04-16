@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Réalisations — Aquapro Plombier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .filter-bar { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 40px; }
+    .filter-btn { background: #f0f4fc; color: #64748b; border: 1px solid #dde5f5; padding: 9px 20px; font-weight: 600; cursor: pointer; border-radius: 100px; }
+    .filter-btn:hover, .filter-btn.active { background: #2f66c6; color: #fff; border-color: #2f66c6; }
+    .real-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    @media(max-width:768px){ .real-grid { grid-template-columns: 1fr 1fr; } }
+    @media(max-width:480px){ .real-grid { grid-template-columns: 1fr; } }
+    .real-card { background: #fff; border: 1px solid #dde5f5; border-radius: 4px; overflow: hidden; cursor: pointer; }
+    .real-card:hover { box-shadow: 0 8px 32px rgba(47,102,198,.15); transform: translateY(-4px); }
+    .real-img { height: 220px; overflow: hidden; background: #e8f0fd; display: flex; align-items: center; justify-content: center; }
+    .real-img img { width: 100%; height: 100%; object-fit: cover; }
+    .real-info { padding: 18px 20px; }
+    .real-cat { font-size: .74rem; font-weight: 700; text-transform: uppercase; color: #2f66c6; display: block; margin-bottom: 6px; }
+    .real-info h3 { font-size: 1rem; margin-bottom: 4px; }
+    .real-info p { font-size: .82rem; color: #64748b; }
+    .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,.85); z-index: 99999; display: none; align-items: center; justify-content: center; padding: 20px; }
+    .lightbox.open { display: flex; }
+    .lightbox-inner { position: relative; max-width: 800px; width: 100%; background: #fff; border-radius: 4px; }
+    .lightbox-img img { width: 100%; max-height: 500px; object-fit: cover; display: block; }
+    .lightbox-body { padding: 20px 24px; }
+    .lightbox-close { position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,.5); color: #fff; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container topbar-inner">
+    <div class="logo"><a href="index.html"><img src="img/logo.webp" alt="Aquapro Plombier"></a></div>
+    <div class="topbar-info">
+      <span><i class="fa fa-map-marker-alt"></i> 15 ter Chemin de Meaux, 93360 Neuilly Plaisance</span>
+      <span><i class="fa fa-envelope"></i> contact@aquaproplombier.fr</span>
+      <div class="topbar-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="navbar" id="navbar">
+  <div class="container navbar-inner">
+    <a href="index.html" class="nav-logo">Aquapro Plombier</a>
+    <button class="burger" id="burger"><i class="fa fa-bars"></i></button>
+    <div class="nav-menu" id="nav-menu">
+      <a href="index.html" class="nav-link">Accueil</a>
+      <a href="about.html" class="nav-link">À propos</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="zone-intervention.html" class="nav-link">Zone d'intervention</a>
+      <a href="realisations.html" class="nav-link active">Réalisations</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+      <a href="booking.html" class="nav-link">Réservation</a>
+    </div>
+    <div class="nav-phone">
+      <div class="nav-phone-icon"><i class="fa fa-phone-alt"></i></div>
+      <div><p>Urgence 7j/7</p><h5>06.77.21.87.87</h5></div>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <h1>Nos Réalisations</h1>
+    <nav class="breadcrumb"><a href="index.html">Accueil</a><span>/</span><span>Réalisations</span></nav>
+  </div>
+</div>
+
+<section class="section-pad">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h6 class="label-upper">Portfolio</h6>
+      <h2 class="section-title">Nos travaux récents</h2>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">Tout voir</button>
+      <button class="filter-btn" data-filter="depannage">Dépannage</button>
+      <button class="filter-btn" data-filter="installation">Installation</button>
+      <button class="filter-btn" data-filter="renovation">Rénovation</button>
+      <button class="filter-btn" data-filter="urgence">Urgence</button>
+    </div>
+
+    <div class="real-grid" id="real-grid">
+      <div class="real-card" data-cat="depannage" data-title="Réparation fuite sous évier" data-desc="Détection et remplacement du siphon + joint défectueux.">
+        <div class="real-img"><img src="img/service-1.jpg" alt="Réparation fuite"><div class="real-overlay"><i class="fa fa-search-plus"></i></div></div>
+        <div class="real-info"><span class="real-cat">Dépannage</span><h3>Réparation fuite sous évier</h3><p>Neuilly Plaisance</p></div>
+      </div>
+      <div class="real-card" data-cat="installation" data-title="Installation chauffe-eau" data-desc="Remplacement d'un ancien cumulus par un chauffe-eau thermodynamique 200L.">
+        <div class="real-img"><img src="img/service-2.jpg" alt="Chauffe-eau"><div class="real-overlay"><i class="fa fa-search-plus"></i></div></div>
+        <div class="real-info"><span class="real-cat">Installation</span><h3>Chauffe-eau thermodynamique</h3><p>Rosny-sous-Bois</p></div>
+      </div>
+      <div class="real-card" data-cat="urgence" data-title="Dégât des eaux" data-desc="Rupture de canalisation, intervention le dimanche en moins de 2h.">
+        <div class="real-img"><img src="img/service-3.jpg" alt="Urgence"><div class="real-overlay"><i class="fa fa-search-plus"></i></div></div>
+        <div class="real-info"><span class="real-cat">Urgence</span><h3>Rupture canalisation</h3><p>Montreuil</p></div>
+      </div>
+      <div class="real-card" data-cat="renovation" data-title="Rénovation salle de bain" data-desc="Pose de douche à l'italienne, meuble vasque, WC suspendu.">
+        <div class="real-img"><img src="img/about-1.jpg" alt="Salle de bain"><div class="real-overlay"><i class="fa fa-search-plus"></i></div></div>
+        <div class="real-info"><span class="real-cat">Rénovation</span><h3>Salle de bain clé en main</h3><p>Noisy-le-Grand</p></div>
+      </div>
+      <div class="real-card" data-cat="depannage" data-title="Débouchage colonne" data-desc="Débouchage haute pression d'une colonne d'évacuation sur 4 étages.">
+        <div class="real-img"><img src="img/about-2.jpg" alt="Débouchage"><div class="real-overlay"><i class="fa fa-search-plus"></i></div></div>
+        <div class="real-info"><span class="real-cat">Dépannage</span><h3>Débouchage colonne</h3><p>Bobigny</p></div>
+      </div>
+      <div class="real-card" data-cat="installation" data-title="Pose WC suspendu" data-desc="Pose d'un WC suspendu avec bâti-support.">
+        <div class="real-img"><img src="img/about-1.jpg" alt="WC suspendu"><div class="real-overlay"><i class="fa fa-search-plus"></i></div></div>
+        <div class="real-info"><span class="real-cat">Installation</span><h3>WC suspendu</h3><p>Fontenay-sous-Bois</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" id="lightbox-close">✕</button>
+    <div class="lightbox-img"><img id="lightbox-img" src="" alt=""></div>
+    <div class="lightbox-body"><h3 id="lightbox-title"></h3><p id="lightbox-desc"></p></div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Adresse</h4>
+        <p><i class="fa fa-map-marker-alt"></i> 15 ter Chemin de Meaux, 93360 Neuilly Plaisance</p>
+        <p><i class="fa fa-phone-alt"></i> 06.77.21.87.87</p>
+        <p><i class="fa fa-envelope"></i> contact@aquaproplombier.fr</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Horaires</h4>
+        <h6>Lundi — Vendredi :</h6>
+        <p class="mb-4">8h00 — 20h00</p>
+        <h6>Samedi — Dimanche :</h6>
+        <p>Urgences uniquement</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <a class="footer-link" href="services.html">Réparation fuites</a>
+        <a class="footer-link" href="services.html">Débouchage</a>
+        <a class="footer-link" href="services.html">Chauffe-eau</a>
+        <a class="footer-link" href="services.html">Plomberie neuve</a>
+        <a class="footer-link" href="services.html">Urgences</a>
+      </div>
+      <div>
+        <h4>Newsletter</h4>
+        <p>Restez informé de nos offres et conseils plomberie.</p>
+        <div class="newsletter-wrap">
+          <input type="email" placeholder="Votre email">
+          <button>S'inscrire</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <span>© 2026 Aquapro Plombier. Tous droits réservés.</span>
+      <span>Site conçu par <a href="https://cmd-solutions.fr" target="_blank">CMD Solutions</a></span>
+      <span><a href="mentions-legales.html">Mentions légales</a> · <a href="politique-de-confidentialite.html">Politique de confidentialité</a></span>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="back-to-top" id="back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+<script src="main.js"></script>
+<script src="widget.js"></script>
+<script>
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      const filter = this.dataset.filter;
+      document.querySelectorAll('.real-card').forEach(card => {
+        card.style.display = (filter === 'all' || card.dataset.cat === filter) ? '' : 'none';
+      });
+    });
+  });
+  const lightbox = document.getElementById('lightbox');
+  document.querySelectorAll('.real-card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.getElementById('lightbox-img').src = card.querySelector('img').src;
+      document.getElementById('lightbox-title').textContent = card.dataset.title || '';
+      document.getElementById('lightbox-desc').textContent = card.dataset.desc || '';
+      lightbox.classList.add('open');
+    });
+  });
+  document.getElementById('lightbox-close').addEventListener('click', () => lightbox.classList.remove('open'));
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.classList.remove('open'); });
+</script>
+</body>
+</html>
