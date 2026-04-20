@@ -106,7 +106,7 @@
     whatsappDiv.href = whatsappUrl;
     whatsappDiv.target = '_blank';
     whatsappDiv.rel = 'noopener noreferrer';
-    whatsappDiv.innerHTML = '<i class="fab fa-whatsapp"></i>';
+    whatsappDiv.innerHTML = '<i class="fab fa-whatsapp"></i><span class="wa-label">WhatsApp</span>';
     whatsappDiv.setAttribute('aria-label', 'Contactez-nous sur WhatsApp');
     document.body.appendChild(whatsappDiv);
   }
@@ -151,6 +151,7 @@
       <div class="chatbot-float">
         <div class="chatbot-toggle" id="chatbot-toggle">
           <i class="fas fa-comment-dots"></i>
+          <span class="cb-label">Assistance</span>
         </div>
         <div class="chatbot-window" id="chatbot-window">
           <div class="chatbot-header">
