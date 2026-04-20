@@ -77,55 +77,57 @@ h1,h2,h3,h4,h5,h6 { font-family: 'Outfit', sans-serif; line-height: 1.2; }
 .fade-in { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
 
+/* ══════════════════════════════════
+   TOPBAR
+══════════════════════════════════ */
+.topbar { background: var(--light); display: block; }
+
 .topbar-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 10px 0;
+  min-height: 80px;
 }
 
 .logo,
 .topbar-logo {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 }
 
+/* Mobile : logo compact */
 .logo img,
 .topbar-logo img {
-  height: 100px;
+  height: 60px;
   width: auto;
+  display: block;
 }
 
+/* Desktop : logo grand + infos visibles */
+@media(min-width:992px){
+  .topbar-inner { min-height: 120px; }
+  .logo img, .topbar-logo img { height: 100px; }
+}
 
-/* ══════════════════════════════════
-   TOPBAR
-══════════════════════════════════ */
-.topbar { background: var(--light); display: block; }
-/* Sur mobile : masquer les infos texte et les réseaux, garder uniquement le logo */
-@media(max-width:991px){
-  .topbar-info { display: none; }
-  .topbar-inner { min-height: 70px; justify-content: center; }
-  .logo img { height: 60px; }
-}
-.topbar-inner {
-  min-height: 120px;
-  padding: 10px 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 .topbar-logo a {
   font-family: 'Outfit', sans-serif;
   font-weight: 800;
   font-size: 1.6rem;
   color: var(--primary);
 }
+
+/* Infos masquées sur mobile, visibles sur desktop */
 .topbar-info {
-  display: flex;
+  display: none;
   align-items: center;
   gap: 28px;
   font-size: .85rem;
   color: #444;
 }
+@media(min-width:992px){ .topbar-info { display: flex; } }
+
 .topbar-info i { color: var(--primary); margin-right: 6px; }
 .topbar-social { display: flex; gap: 6px; }
 .topbar-social a {
@@ -162,7 +164,8 @@ h1,h2,h3,h4,h5,h6 { font-family: 'Outfit', sans-serif; line-height: 1.2; }
   display: none;
   margin-right: auto;
 }
-@media(max-width:991px){ .nav-logo { display: block; } }
+/* Sur mobile, la topbar affiche déjà le logo image — on n'affiche pas le texte en double */
+/* @media(max-width:991px){ .nav-logo { display: block; } } */
 .burger {
   background: none;
   border: none;
@@ -171,6 +174,7 @@ h1,h2,h3,h4,h5,h6 { font-family: 'Outfit', sans-serif; line-height: 1.2; }
   color: var(--dark);
   margin-left: auto;
   display: none;
+  padding: 8px;
 }
 @media(max-width:991px){ .burger { display: block; } }
 .nav-menu {
