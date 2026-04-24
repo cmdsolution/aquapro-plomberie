@@ -974,7 +974,7 @@ h1,h2,h3,h4,h5,h6 { font-family: 'Outfit', sans-serif; line-height: 1.2; }
    =================================================== */
 .chatbot-float {
     position: fixed;
-    bottom: 20px;
+    bottom: 90px;
     right: 20px;
     z-index: 1001;
 }
@@ -1219,7 +1219,7 @@ h1,h2,h3,h4,h5,h6 { font-family: 'Outfit', sans-serif; line-height: 1.2; }
     }
     .whatsapp-float .wa-label { font-size: 13px; }
     .chatbot-float {
-        bottom: 12px;
+        bottom: 80px;
         right: 12px;
     }
     .chatbot-toggle {
@@ -1233,4 +1233,37 @@ h1,h2,h3,h4,h5,h6 { font-family: 'Outfit', sans-serif; line-height: 1.2; }
         right: 0;
         bottom: 60px;
     }
+}
+.btn-play-btn {
+  width: auto;
+  height: auto;
+  padding: 16px 24px;
+  border-radius: 999px;
+  background: #e11d48;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(225,29,72,0.35);
+  transition: 0.3s;
+}
+.btn-play-btn:hover {
+  transform: translateY(-2px);
+  background: #be123c;
+}
+.btn-play-btn {
+  color: #fff;
+}
+.booking-banner {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+.booking-bg {
+  margin-bottom: 60px;
 }
