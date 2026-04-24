@@ -15,6 +15,11 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="style.css">
+  <style>
+    #fuites, #debouchage, #urgence, #chauffe-eau, #chauffage, #renovation {
+      scroll-margin-top: 90px;
+    }
+  </style>
 </head>
 
 <body>
@@ -98,109 +103,134 @@
   </div>
 </div>
 
-<!-- SERVICES -->
-<section class="section-pad">
-  <div class="container">
-
-    <div class="text-center mb-5">
-      <h6 class="label-upper">Prestations complètes</h6>
-      <h1 class="section-title">Tous nos services de plomberie</h1>
-    </div>
-
-    <!-- TOP SERVICES -->
-    <div class="grid-3" style="gap:28px;">
-
-      <div class="svc-top-card fade-in">
-        <div class="svc-top-img">
-          <img src="img/service-1.jpg" alt="Plomberie résidentielle">
-        </div>
-        <div class="svc-top-bar">
-          <h5>Plomberie Résidentielle</h5>
-          <a href="booking.html" class="svc-arrow"><i class="fa fa-arrow-right"></i></a>
-        </div>
+  <!-- SERVICES CAROUSEL -->
+  <section class="section-pad" style="padding-left:0;padding-right:0;">
+    <div class="svc-carousel-wrap">
+      <div class="svc-sidebar">
+        <h2>Nos Prestations</h2>
       </div>
+      <div class="svc-carousel-content">
+        <div style="padding:0 0 0 48px;">
 
-      <div class="svc-top-card fade-in">
-        <div class="svc-top-img">
-          <img src="img/service-2.jpg" alt="Plomberie commerciale">
-        </div>
-        <div class="svc-top-bar">
-          <h5>Plomberie Commerciale</h5>
-          <a href="booking.html" class="svc-arrow"><i class="fa fa-arrow-right"></i></a>
-        </div>
-      </div>
 
-      <div class="svc-top-card fade-in">
-        <div class="svc-top-img">
-          <img src="img/service-3.jpg" alt="Urgences plomberie">
-        </div>
-        <div class="svc-top-bar">
-          <h5>Interventions d'Urgence</h5>
-          <a href="booking.html" class="svc-arrow"><i class="fa fa-arrow-right"></i></a>
-        </div>
-      </div>
+<div class="svc-cards-track svc-cards-full" id="svc-track">
 
-    </div>
+  <!-- Réparation de fuites -->
+  <div id="fuites" class="svc-card">
+    <div class="svc-card-icon"><i class="fa fa-wrench fa-2x"></i></div>
+    <h4>Réparation de fuites</h4>
+    <p>Détection et réparation rapide de fuites sur robinets, tuyaux et installations sanitaires.</p>
+    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Une fuite, même légère, peut rapidement causer des dégâts importants : humidité, moisissures, augmentation de votre facture d’eau ou détérioration des installations. Une intervention rapide permet d’éviter des réparations coûteuses.</p>
+    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Nous localisons précisément l’origine de la fuite, qu’elle soit visible ou cachée (tuyaux, robinets, joints, chasse d’eau…). Chaque intervention est précédée d’un diagnostic pour garantir une réparation efficace et durable.</p>
+    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Nous intervenons rapidement, 7j/7, pour sécuriser votre installation et stopper la fuite au plus vite.</p>
+ 
+  </div>
 
-    <!-- SERVICES DETAILS -->
-    <div class="grid-3" style="margin-top:40px;">
-
-      <div class="svc-card fade-in">
-        <div class="svc-card-icon"><i class="fa fa-water fa-2x"></i></div>
-        <h4>Réparation fuites</h4>
-        <p>Détection et réparation de toutes fuites.</p>
-        <p class="check-line-blue"><i class="fa fa-check text-success"></i> Qualité garantie</p>
-        <p class="check-line-blue"><i class="fa fa-check text-success"></i> Support 7j/7</p>
-        <a href="booking.html" class="svc-card-btn">Réserver <i class="fa fa-arrow-right"></i></a>
-      </div>
-
-      <div class="svc-card fade-in">
-        <div class="svc-card-icon"><i class="fa fa-toilet fa-2x"></i></div>
-        <h4>Débouchage</h4>
-        <p>Éviers, WC, canalisations.</p>
-        <p class="check-line-blue"><i class="fa fa-check text-success"></i> Qualité garantie</p>
-        <p class="check-line-blue"><i class="fa fa-check text-success"></i> Support 7j/7</p>
-        <a href="booking.html" class="svc-card-btn">Réserver <i class="fa fa-arrow-right"></i></a>
-      </div>
-
-      <div class="svc-card fade-in">
-        <div class="svc-card-icon"><i class="fa fa-tint fa-2x"></i></div>
-        <h4>Chauffe-eau</h4>
-        <p>Installation et remplacement.</p>
-        <p class="check-line-blue"><i class="fa fa-check text-success"></i> Qualité garantie</p>
-        <p class="check-line-blue"><i class="fa fa-check text-success"></i> Support 7j/7</p>
-        <a href="booking.html" class="svc-card-btn">Réserver <i class="fa fa-arrow-right"></i></a>
-      </div>
-
-      <div class="svc-card fade-in">
-        <div class="svc-card-icon"><i class="fa fa-shower fa-2x"></i></div>
-        <h4>Plomberie neuve</h4>
-        <p>Installation complète.</p>
-        <p class="check-line-blue"><i class="fa fa-check text-success"></i> Qualité garantie</p>
-        <p class="check-line-blue"><i class="fa fa-check text-success"></i> Support 7j/7</p>
-        <a href="booking.html" class="svc-card-btn">Réserver <i class="fa fa-arrow-right"></i></a>
-      </div>
-<div class="svc-card fade-in">
-        <div class="svc-card-icon"><i class="fa fa-tint fa-2x"></i></div>
-        <h4>Chauffe-eau</h4>
-        <p>Installation et remplacement.</p>
-        <p class="check-line-blue"><i class="fa fa-check text-success"></i> Qualité garantie</p>
-        <p class="check-line-blue"><i class="fa fa-check text-success"></i> Support 7j/7</p>
-        <a href="booking.html" class="svc-card-btn">Réserver <i class="fa fa-arrow-right"></i></a>
-      </div>
-	  <div class="svc-card fade-in">
-        <div class="svc-card-icon"><i class="fa fa-tint fa-2x"></i></div>
-        <h4>Chauffe-eau</h4>
-        <p>Installation et remplacement.</p>
-        <p class="check-line-blue"><i class="fa fa-check text-success"></i> Qualité garantie</p>
-        <p class="check-line-blue"><i class="fa fa-check text-success"></i> Support 7j/7</p>
-        <a href="booking.html" class="svc-card-btn">Réserver <i class="fa fa-arrow-right"></i></a>
-      </div>
-	  
-    </div>
+  <!-- Débouchage -->
+  <div id="debouchage" class="svc-card">
+    <div class="svc-card-icon"><i class="fa fa-toilet fa-2x"></i></div>
+    <h4>Débouchage</h4>
+    <p>Débouchage haute pression pour éviers, WC, douches et canalisations.</p>
+    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Une canalisation bouchée peut rapidement devenir un problème majeur : mauvaises odeurs, évacuation lente ou blocage complet.</p>
+    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Nous utilisons des techniques de débouchage haute pression pour éliminer efficacement les bouchons sans endommager vos installations. Cette méthode permet un nettoyage en profondeur et limite les risques de récidive.</p>
+    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Nous intervenons sur tous types d’équipements : éviers, WC, douches, baignoires et canalisations.</p>
 
   </div>
-</section>
+
+  <!-- Urgences -->
+  <div id="urgence" class="svc-card">
+    <div class="svc-card-icon"><i class="fa fa-exclamation-triangle fa-2x"></i></div>
+    <h4>Urgences plomberie & chauffage</h4>
+    <p>Intervention rapide 7j/7 pour fuites, pannes de chauffage et situations urgentes.</p>
+    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Certaines situations ne peuvent pas attendre : fuite importante, panne de chauffage, canalisation bouchée ou dégât des eaux.</p>
+    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Nous assurons un service d’urgence 24h/24 et 7j/7 pour intervenir rapidement et limiter les dégâts. Notre priorité est de sécuriser votre logement et de rétablir le bon fonctionnement de vos installations.</p>
+    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Une intervention rapide permet souvent d’éviter des réparations plus lourdes et coûteuses.</p>
+
+  </div>
+
+  <!-- Chauffe-eau -->
+  <div id="chauffe-eau" class="svc-card">
+    <div class="svc-card-icon"><i class="fa fa-fire fa-2x"></i></div>
+    <h4>Chauffe-eau</h4>
+    <p>Installation, entretien et remplacement de chauffe-eau toutes énergies.</p>
+    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Le chauffe-eau est un élément essentiel de votre confort quotidien. Une panne peut rapidement devenir contraignante.</p>
+    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Nous assurons l’installation, l’entretien et le remplacement de tous types de chauffe-eau (électrique, gaz…). Nous vous conseillons sur les solutions adaptées à votre logement et à votre consommation.</p>
+    <p class="check-line-blue"><i class="fa fa-check text-success"></i> En cas de panne, nous intervenons rapidement pour rétablir votre production d’eau chaude dans les meilleurs délais.</p>
+
+  </div>
+
+  <!-- Chauffage -->
+  <div id="chauffage" class="svc-card">
+    <div class="svc-card-icon"><i class="fa fa-thermometer-half fa-2x"></i></div>
+    <h4>Chauffage</h4>
+    <p>Installation et dépannage de chaudières, radiateurs et systèmes de chauffage.</p>
+    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Un système de chauffage défaillant impacte directement votre confort, surtout en période hivernale.</p>
+    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Nous intervenons pour le dépannage, l’installation et l’entretien de vos équipements : chaudières, radiateurs et systèmes de chauffage.</p>
+    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Notre objectif est de vous garantir une installation fiable, performante et adaptée à vos besoins, tout en assurant une intervention rapide en cas de problème.</p>
+
+  </div>
+
+  <!-- Plomberie neuve & rénovation -->
+  <div id="renovation" class="svc-card">
+    <div class="svc-card-icon"><i class="fa fa-shower fa-2x"></i></div>
+    <h4>Plomberie neuve & rénovation</h4>
+    <p>Création et rénovation complète de réseaux de plomberie pour habitations et professionnels.</p>
+    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Que ce soit pour une construction ou une rénovation, une installation de plomberie doit être fiable, durable et parfaitement adaptée à votre usage.</p>
+    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Nous réalisons des installations complètes : réseaux d’eau, sanitaires, raccordements… en respectant les normes en vigueur.</p>
+    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Chaque projet est étudié sur mesure afin de garantir un résultat fonctionnel, esthétique et durable dans le temps.</p>
+
+  </div>
+
+</div>
+
+</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- BOOKING BANNER -->
+<div class="booking-banner">
+  <div class="booking-bg">
+    <h1>Une urgence ? Nous intervenons rapidement</h1>
+    <h3>7 Jours sur 7</h3>
+    <a href="tel:+33677218787" class="btn-play-wrap">
+      <span class="btn-play-btn">Appel d'urgence</span>
+    </a>
+  </div>
+</div>
+<div class="container" style="position:relative;z-index:2;">
+  <div class="booking-form-wrap">
+    <h2>Réserver une Intervention</h2>
+    <form id="booking-form" action="https://formspree.io/f/xeevvwdj" method="POST">
+  <div class="bform-row">
+    <input type="text" name="nom" placeholder="Votre nom" required>
+    <input type="email" name="email" placeholder="Votre email" required>
+  </div>
+  <div class="bform-row">
+    <select name="service" required>
+      <option value="">Choisir un service</option>
+      <option value="reparation-fuite">Réparation de fuite</option>
+      <option value="debouchage">Débouchage</option>
+      <option value="chauffage">Chauffage</option>
+      <option value="chauffe-eau">Chauffe-eau</option>
+      <option value="urgence">Urgence</option>
+    </select>
+    <input type="date" name="date">
+  </div>
+  <textarea name="message" placeholder="Message ou demande spéciale"></textarea>
+
+  <input type="hidden" name="_subject" value="Nouvelle demande d'intervention - AquaPro">
+  <input type="hidden" name="_next" value="https://cmdsolution.github.io/aquapro-plomberie/">
+
+  <button type="submit" class="btn-primary w-full">
+    Réserver maintenant
+  </button>
+</form>
+<div id="form-success" style="display:none; background:#22c55e; color:#fff; padding:16px 24px; border-radius:8px; margin-top:16px; text-align:center; font-size:1.1rem;">
+  ✅ Votre demande a bien été envoyée ! Nous vous contacterons très rapidement.
+</div>
+  </div>
+</div>
 
 <!-- FOOTER -->
   <footer class="footer">
