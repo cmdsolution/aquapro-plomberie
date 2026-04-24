@@ -152,13 +152,13 @@
 
         <div class="map-wrap">
           <iframe
-  src="https://www.google.com/maps?q=15+ter+Chemin+de+Meaux,+93360+Neuilly+Plaisance&output=embed"
-  width="100%"
-  height="260"
-  style="border:0;"
-  allowfullscreen=""
-  loading="lazy">
-</iframe>
+            src="https://www.google.com/maps?q=15+ter+Chemin+de+Meaux,+93360+Neuilly+Plaisance&output=embed"
+            width="100%"
+            height="260"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy">
+          </iframe>
         </div>
 
       </div>
@@ -168,35 +168,41 @@
 
         <h3>Envoyez-nous un message</h3>
 
-        <form id="contact-form">
+        <form id="contact-form" action="https://formspree.io/f/mqewwvbw" method="POST">
 
           <div class="form-row">
             <div class="form-group">
               <label>Prénom et nom</label>
-              <input type="text" placeholder="Jean Dupont" required>
+              <input type="text" name="nom" placeholder="Jean Dupont" required>
             </div>
 
             <div class="form-group">
               <label>Email</label>
-              <input type="email" placeholder="jean@email.fr" required>
+              <input type="email" name="email" placeholder="jean@email.fr" required>
             </div>
           </div>
 
           <div class="form-group">
             <label>Sujet</label>
-            <input type="text" placeholder="Ex : demande de devis..." required>
+            <input type="text" name="sujet" placeholder="Ex : demande de devis..." required>
           </div>
 
           <div class="form-group">
             <label>Message</label>
-            <textarea placeholder="Décrivez votre demande..." style="min-height:150px;"></textarea>
+            <textarea name="message" placeholder="Décrivez votre demande..." style="min-height:150px;"></textarea>
           </div>
+
+          <input type="hidden" name="_subject" value="Nouveau message de contact — AquaPro">
 
           <button type="submit" class="form-submit">
             Envoyer le message
           </button>
 
         </form>
+
+        <div id="form-success" style="display:none; background:#22c55e; color:#fff; padding:16px 24px; border-radius:8px; margin-top:16px; text-align:center; font-size:1.1rem;">
+          ✅ Votre message a bien été envoyé ! Nous vous répondrons très rapidement.
+        </div>
 
       </div>
 
@@ -230,13 +236,12 @@
         </div>
         <div>
           <h4>Interventions</h4>
-
-<a class="footer-link" href="#">Urgences plomberie & chauffage</a>
-<a class="footer-link" href="#">Fuite d’eau – réparation rapide</a>
-<a class="footer-link" href="#">Débouchage canalisation</a>
-<a class="footer-link" href="#">Chauffage – dépannage & installation</a>
-<a class="footer-link" href="#">Chauffe-eau – entretien & pose</a>
-<a class="footer-link" href="#">Plomberie neuve & rénovation</a>
+          <a class="footer-link" href="#">Urgences plomberie & chauffage</a>
+          <a class="footer-link" href="#">Fuite d'eau – réparation rapide</a>
+          <a class="footer-link" href="#">Débouchage canalisation</a>
+          <a class="footer-link" href="#">Chauffage – dépannage & installation</a>
+          <a class="footer-link" href="#">Chauffe-eau – entretien & pose</a>
+          <a class="footer-link" href="#">Plomberie neuve & rénovation</a>
         </div>
         <div>
           <h4>Newsletter</h4>
@@ -248,20 +253,18 @@
         </div>
       </div>
     </div>
-<div class="footer-bottom">
+    <div class="footer-bottom">
       <div class="container footer-bottom-inner">
-         <span>© 2026 Aquapro Plombier. Tous droits réservés.</span>
-
-    <span>
-      Site conçu et administré par
-      <a href="https://cmd-solutions.fr" target="_blank">CMD Solutions</a>
-    </span>
-
-    <span>
-      <a href="mentions-legales.html" target="_blank">Mentions légales</a>
-      ·
-      <a href="politique-de-confidentialite.html" target="_blank">Politique de confidentialité</a>
-    </span>
+        <span>© 2026 Aquapro Plombier. Tous droits réservés.</span>
+        <span>
+          Site conçu et administré par
+          <a href="https://cmd-solutions.fr" target="_blank">CMD Solutions</a>
+        </span>
+        <span>
+          <a href="mentions-legales.html" target="_blank">Mentions légales</a>
+          ·
+          <a href="politique-de-confidentialite.html" target="_blank">Politique de confidentialité</a>
+        </span>
       </div>
     </div>
   </footer>
