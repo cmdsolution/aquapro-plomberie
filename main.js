@@ -79,21 +79,20 @@
   }, { threshold: 0.12 });
 
   document.querySelectorAll('.fade-in, .counter').forEach(el => io.observe(el));
-
+  
   // ========== FORMULAIRE SUBMIT ==========
-  ['booking-form', 'contact-form', 'booking-page-form'].forEach(id => {
-    const form = document.getElementById(id);
-    if (!form) return;
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const btn = form.querySelector('button[type="submit"], .form-submit, .btn-primary');
-      if (!btn) return;
-      const orig = btn.textContent;
-      btn.textContent = '✓ Envoyé !';
-      btn.style.background = '#22c55e';
-      setTimeout(() => { btn.textContent = orig; btn.style.background = ''; form.reset(); }, 3000);
-    });
+['booking-form', 'contact-form', 'booking-page-form'].forEach(id => {
+  const form = document.getElementById(id);
+  if (!form) return;
+  form.addEventListener('submit', () => {
+    const btn = form.querySelector('button[type="submit"], .form-submit, .btn-primary');
+    if (!btn) return;
+    btn.textContent = 'Envoi en cours...';
+    btn.disabled = true;
   });
+});
+
+ 
 
   // ========== BULLE WHATSAPP ==========
   const whatsappNumber = "33677218787"; // Numéro sans les espaces ni +

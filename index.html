@@ -365,34 +365,30 @@ Chaque intervention est réalisée avec des solutions sur mesure, parfaitement a
   <div class="booking-form-wrap">
     <h2>Réserver une Intervention</h2>
     <form id="booking-form" action="https://formspree.io/f/xeevvwdj" method="POST">
-      <div class="bform-row">
-        <input type="text" name="nom" placeholder="Votre nom" required>
-        <input type="email" name="email" placeholder="Votre email" required>
-      </div>
-      <div class="bform-row">
-        <select name="service" required>
-          <option value="">Choisir un service</option>
-          <option value="reparation-fuite">Réparation de fuite</option>
-          <option value="debouchage">Débouchage</option>
-          <option value="chauffage">Chauffage</option>
-          <option value="chauffe-eau">Chauffe-eau</option>
-          <option value="urgence">Urgence</option>
-        </select>
-        <input type="date" name="date">
-      </div>
-      <textarea name="message" placeholder="Message ou demande spéciale"></textarea>
+  <div class="bform-row">
+    <input type="text" name="nom" placeholder="Votre nom" required>
+    <input type="email" name="email" placeholder="Votre email" required>
+  </div>
+  <div class="bform-row">
+    <select name="service" required>
+      <option value="">Choisir un service</option>
+      <option value="reparation-fuite">Réparation de fuite</option>
+      <option value="debouchage">Débouchage</option>
+      <option value="chauffage">Chauffage</option>
+      <option value="chauffe-eau">Chauffe-eau</option>
+      <option value="urgence">Urgence</option>
+    </select>
+    <input type="date" name="date">
+  </div>
+  <textarea name="message" placeholder="Message ou demande spéciale"></textarea>
 
-      <!-- Anti-spam honeypot -->
-      <input type="text" name="_honeypot" style="display:none">
-      <!-- Sujet email -->
-      <input type="hidden" name="_subject" value="Nouvelle demande d'intervention - AquaPro">
-      <!-- Redirection après envoi -->
-      <input type="hidden" name="_next" value="https://cmdsolution.github.io/aquapro-plomberie/">
+  <input type="hidden" name="_subject" value="Nouvelle demande d'intervention - AquaPro">
+  <input type="hidden" name="_next" value="https://cmdsolution.github.io/aquapro-plomberie/">
 
-      <button type="submit" class="btn-primary w-full">
-        Réserver maintenant
-      </button>
-    </form>
+  <button type="submit" class="btn-primary w-full">
+    Réserver maintenant
+  </button>
+</form>
   </div>
 </div>
 
