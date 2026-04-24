@@ -1267,3 +1267,12 @@ h1,h2,h3,h4,h5,h6 { font-family: 'Outfit', sans-serif; line-height: 1.2; }
 .booking-bg {
   margin-bottom: 60px;
 }
+/* VERSION FULL WIDTH (1 bloc par ligne) */
+.svc-cards-full {
+  grid-template-columns: 1fr !important;
+}
+
+.svc-cards-full .svc-card {
+  width: 100%;
+  max-width: 100%;
+}
