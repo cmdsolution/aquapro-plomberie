@@ -79,20 +79,38 @@
   }, { threshold: 0.12 });
 
   document.querySelectorAll('.fade-in, .counter').forEach(el => io.observe(el));
-  
-  // ========== FORMULAIRE SUBMIT ==========
-['booking-form', 'contact-form', 'booking-page-form'].forEach(id => {
-  const form = document.getElementById(id);
-  if (!form) return;
-  form.addEventListener('submit', () => {
-    const btn = form.querySelector('button[type="submit"], .form-submit, .btn-primary');
-    if (!btn) return;
-    btn.textContent = 'Envoi en cours...';
-    btn.disabled = true;
-  });
-});
 
- 
+  // ========== FORMULAIRE SUBMIT ==========
+  ['booking-form', 'contact-form', 'booking-page-form'].forEach(id => {
+    const form = document.getElementById(id);
+    if (!form) return;
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"], .form-submit, .btn-primary');
+      if (btn) { btn.textContent = 'Envoi en cours...'; btn.disabled = true; }
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          form.reset();
+          form.style.display = 'none';
+          const success = document.getElementById('form-success');
+          if (success) success.style.display = 'block';
+        } else {
+          alert('Une erreur est survenue. Veuillez réessayer ou nous appeler directement.');
+          if (btn) { btn.textContent = 'Réserver maintenant'; btn.disabled = false; }
+        }
+      } catch {
+        alert('Erreur de connexion. Veuillez réessayer.');
+        if (btn) { btn.textContent = 'Réserver maintenant'; btn.disabled = false; }
+      }
+    });
+  });
 
   // ========== BULLE WHATSAPP ==========
   const whatsappNumber = "33677218787"; // Numéro sans les espaces ni +
