@@ -5,172 +5,639 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Chris M David">
   <meta name="copyright" content="© 2026 CMD solution">
-
   <title>À propos — Aquapro Plombier</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="style.css">
-</head>
 
+  <style>
+    /* ── ABOUT PAGE ENHANCEMENTS ── */
+
+    .page-hero { position: relative; overflow: hidden; }
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.2) 100%);
+      pointer-events: none;
+    }
+    .page-hero .container { position: relative; z-index: 2; }
+
+    /* ── ABOUT PRINCIPALE ── */
+    .about-pro-section { padding: 90px 0 80px; background: #fff; }
+    .about-pro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    /* Image */
+    .about-img-wrap { position: relative; }
+    .about-img-wrap img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+    }
+    .about-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,40,80,.5) 0%, transparent 60%);
+      border-radius: 4px;
+    }
+    .about-img-badge {
+      position: absolute;
+      bottom: -24px;
+      right: -24px;
+      background: #1a56db;
+      color: #fff;
+      border-radius: 4px;
+      padding: 22px 28px;
+      box-shadow: 0 8px 32px rgba(26,86,219,.35);
+      text-align: center;
+      min-width: 140px;
+    }
+    .about-img-badge strong {
+      display: block;
+      font-size: 42px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      color: #fff;
+    }
+    .about-img-badge span {
+      font-size: 13px;
+      color: rgba(255,255,255,.85);
+      font-family: 'Open Sans', sans-serif;
+    }
+    .about-img-cert {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      background: rgba(255,255,255,.95);
+      border-radius: 4px;
+      padding: 10px 16px;
+      font-size: 12px;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 600;
+      color: #1a56db;
+      letter-spacing: .04em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 16px rgba(0,0,0,.12);
+    }
+
+    /* Texte */
+    .about-label {
+      display: inline-block;
+      font-family: 'Outfit', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #1a56db;
+      margin-bottom: 16px;
+      padding-left: 28px;
+      position: relative;
+    }
+    .about-label::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 50%;
+      width: 18px; height: 2px;
+      background: #1a56db;
+      transform: translateY(-50%);
+    }
+    .about-h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 38px;
+      font-weight: 700;
+      color: #0d1b2a;
+      line-height: 1.2;
+      margin: 0 0 24px;
+    }
+    .about-h2 em { font-style: normal; color: #1a56db; }
+    .about-intro {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.8;
+      color: #4a5568;
+      margin-bottom: 20px;
+      border-left: 3px solid #1a56db;
+      padding-left: 18px;
+    }
+    .about-body {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+      color: #5a6a7e;
+      margin-bottom: 32px;
+    }
+
+    /* Engagements */
+    .engagements-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+    .eng-card {
+      background: #f7f9fc;
+      border: 1px solid #e8edf5;
+      border-radius: 6px;
+      padding: 16px 18px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      transition: box-shadow .2s, border-color .2s;
+    }
+    .eng-card:hover {
+      box-shadow: 0 4px 20px rgba(26,86,219,.1);
+      border-color: #c0d0ee;
+    }
+    .eng-icon-wrap {
+      width: 36px; height: 36px;
+      border-radius: 6px;
+      background: #1a56db;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .eng-icon-wrap i { color: #fff; font-size: 14px; }
+    .eng-content strong {
+      display: block;
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px; font-weight: 600;
+      color: #0d1b2a;
+      margin-bottom: 3px;
+    }
+    .eng-content span {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 12px; color: #7a8a9e;
+      line-height: 1.5;
+    }
+
+    /* CTA bar */
+    .about-cta-bar {
+      display: flex; align-items: center; gap: 20px;
+      padding: 20px 24px;
+      background: #0d1b2a;
+      border-radius: 6px;
+    }
+    .about-cta-bar .cta-icon {
+      width: 44px; height: 44px;
+      background: #1a56db; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .about-cta-bar .cta-icon i { color: #fff; font-size: 16px; }
+    .about-cta-bar .cta-text p {
+      margin: 0 0 2px;
+      font-size: 12px; color: rgba(255,255,255,.6);
+      font-family: 'Open Sans', sans-serif;
+    }
+    .about-cta-bar .cta-text h3 {
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px; font-weight: 700;
+      color: #fff; letter-spacing: .02em;
+    }
+    .about-cta-bar .cta-badge {
+      margin-left: auto;
+      background: rgba(26,86,219,.25);
+      border: 1px solid rgba(26,86,219,.4);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 12px;
+      font-family: 'Open Sans', sans-serif;
+      color: #a0bfff;
+      white-space: nowrap;
+    }
+
+    /* ── STATS BAR ── */
+    .stats-pro-bar {
+      background: linear-gradient(135deg, #0d1b2a 0%, #1a2d46 100%);
+      padding: 60px 0;
+    }
+    .stats-pro-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .stat-pro-item {
+      text-align: center;
+      padding: 0 30px;
+      position: relative;
+    }
+    .stat-pro-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0; top: 10%; height: 80%; width: 1px;
+      background: rgba(255,255,255,.1);
+    }
+    .stat-pro-item i {
+      font-size: 22px; color: #1a56db;
+      margin-bottom: 14px; display: block;
+    }
+    .stat-pro-item h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 48px; font-weight: 800;
+      color: #fff; margin: 0 0 6px; line-height: 1;
+    }
+    .stat-pro-item h2 .suffix {
+      font-size: 24px; font-weight: 600; color: #1a56db;
+    }
+    .stat-pro-item p {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 13px; color: rgba(255,255,255,.55);
+      margin: 0; letter-spacing: .03em;
+    }
+
+    /* ── VALEURS ── */
+    .valeurs-section { padding: 90px 0; background: #f7f9fc; }
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .section-header h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 36px; font-weight: 700;
+      color: #0d1b2a; margin: 8px 0 14px;
+    }
+    .section-header p {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 15px; color: #6a7a8e;
+      max-width: 560px; margin: 0 auto; line-height: 1.7;
+    }
+    .valeurs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .valeur-card {
+      background: #fff;
+      border: 1px solid #e8edf5;
+      border-radius: 8px;
+      padding: 36px 30px;
+      transition: box-shadow .25s, transform .25s;
+      position: relative; overflow: hidden;
+    }
+    .valeur-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: #1a56db;
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .3s;
+    }
+    .valeur-card:hover {
+      box-shadow: 0 12px 40px rgba(26,86,219,.12);
+      transform: translateY(-4px);
+    }
+    .valeur-card:hover::before { transform: scaleX(1); }
+    .valeur-icon {
+      width: 52px; height: 52px;
+      background: #eef3fc; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+    }
+    .valeur-icon i { font-size: 20px; color: #1a56db; }
+    .valeur-card h4 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px; font-weight: 700;
+      color: #0d1b2a; margin: 0 0 12px;
+    }
+    .valeur-card p {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 14px; color: #6a7a8e;
+      line-height: 1.75; margin: 0;
+    }
+
+    /* ── ZONE ── */
+    .zone-section { padding: 80px 0; background: #fff; }
+    .zone-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center;
+    }
+    .zone-tags {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin-top: 24px;
+    }
+    .zone-tag {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 8px 16px;
+      border: 1px solid #dce6f5; border-radius: 3px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 13px; color: #3a4a5e;
+      background: #f5f8ff;
+    }
+    .zone-tag i { font-size: 11px; color: #1a56db; }
+    .zone-map-wrap {
+      background: linear-gradient(135deg, #0d1b2a 0%, #1a2d46 100%);
+      border-radius: 8px; padding: 48px 40px;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .zone-map-wrap::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 60% 40%, rgba(26,86,219,.25) 0%, transparent 65%);
+    }
+    .zone-map-icon { position: relative; z-index: 2; }
+    .zone-map-icon i {
+      font-size: 64px; color: rgba(26,86,219,.5);
+      display: block; margin-bottom: 20px;
+    }
+    .zone-map-icon h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px; font-weight: 700;
+      color: #fff; margin: 0 0 8px;
+    }
+    .zone-map-icon p {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 13px; color: rgba(255,255,255,.5); margin: 0;
+    }
+    .zone-cta {
+      position: relative; z-index: 2;
+      margin-top: 30px; display: inline-block;
+      background: #1a56db; color: #fff;
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px; font-weight: 600;
+      padding: 12px 28px; border-radius: 4px;
+      text-decoration: none; transition: background .2s;
+    }
+    .zone-cta:hover { background: #1447b8; color: #fff; }
+
+    /* Fade-up */
+    .fade-up {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .about-pro-grid, .zone-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-img-badge { bottom: -16px; right: 16px; }
+      .stats-pro-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+      .stat-pro-item:not(:last-child)::after { display: none; }
+      .valeurs-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .about-h2 { font-size: 28px; }
+      .valeurs-grid, .engagements-grid { grid-template-columns: 1fr; }
+      .stats-pro-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-cta-bar { flex-wrap: wrap; }
+      .about-cta-bar .cta-badge { margin-left: 0; }
+    }
+  </style>
+</head>
 <body>
 
   <!-- TOPBAR -->
   <div class="topbar">
     <div class="container topbar-inner">
-<div class="logo">
-  <a href="index.html">
-    <img src="img/logo.webp" alt="Aquapro Plombier">
-  </a>
-  <div class="logo-tagline">Plomberie - Chauffage - Rénovation</div>
-</div> 
+      <div class="logo">
+        <a href="index.html"><img src="img/logo.webp" alt="Aquapro Plombier"></a>
+        <div class="logo-tagline">Plomberie - Chauffage - Rénovation</div>
+      </div>
       <div class="topbar-info">
         <span><i class="fa fa-map-marker-alt"></i> 15 ter Chemin de Meaux, 93360 Neuilly Plaisance</span>
         <span><i class="fa fa-envelope"></i> contact@aquaproplombier.fr</span>
-
-      <div class="topbar-social">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
+        <div class="topbar-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
       </div>
     </div>
-
   </div>
-</div>
 
-<!-- NAVBAR -->
-<nav class="navbar" id="navbar">
-  <div class="container navbar-inner">
-
-    <a href="index.html" class="nav-logo">Aquapro Plombier</a>
-
-    <button class="burger" id="burger">
-      <i class="fa fa-bars"></i>
-    </button>
-
-    <div class="nav-menu" id="nav-menu">
-      <a href="index.html" class="nav-link">Accueil</a>
-      <a href="about.html" class="nav-link active">À propos</a>
-      <a href="services.html" class="nav-link">Services</a>
-      <a href="zone-intervention.html" class="nav-link">Zone d'intervention</a>
-      <a href="contact.html" class="nav-link">Contact</a>
-    </div>
-      <div class="nav-phone">
-      <div class="nav-phone-icon">
-        <i class="fa fa-phone-alt"></i>
-      </div>
-      <div>
-        <p>Urgence 7j/7</p>
-        <h5>06.77.21.87.87</h5>
-      </div>
-    </div>
-
-  </div>
-</nav>
-
-<!-- HERO -->
-<div class="page-hero">
-  <div class="container">
-    <h1>À propos d'AquaPro</h1>
-    <nav class="breadcrumb">
-      <a href="index.html">Accueil</a>
-      <span>/</span>
-      <span>À propos</span>
-    </nav>
-  </div>
-</div>
-
-<!-- ABOUT -->
-<section class="section-pad">
-  <div class="container">
-    <div class="about-page-grid">
-
-      <div class="about-page-img fade-in">
-        <img src="img/about-1.jpg" alt="Plombier AquaPro">
-      </div>
-
-      <div class="fade-in">
-
-        <h6 class="label-upper">Notre histoire</h6>
-
-        <h2 class="section-title">
-          18 ans de confiance, bâtis intervention après intervention.
-        </h2>
-
-        <p class="text-muted mb-3">
-          AquaPro est née d'une conviction : le dépannage à domicile mérite autant de rigueur et de transparence que n'importe quel service professionnel.
-        </p>
-
-        <p class="text-muted mb-4">
-          Aujourd'hui, notre équipe de 35 techniciens certifiés intervient chaque jour auprès des particuliers et des entreprises. Nous sommes fiers de notre taux de satisfaction de 98%.
-        </p>
-
-        <p class="check-line"><i class="fa fa-check text-success"></i> Certifiés RGE et assurés décennaux</p>
-        <p class="check-line"><i class="fa fa-check text-success"></i> Diplôme CAP BP / Formation continue </p>
-        <p class="check-line"><i class="fa fa-check text-success"></i> Transparence totale sur les devis</p>
-        <p class="check-line"><i class="fa fa-check text-success"></i> Garantie pièces et main-d'œuvre</p>
-
-        <div class="phone-box" style="margin-top:28px;">
-          <div class="phone-icon">
-            <i class="fa fa-phone-alt fa-lg"></i>
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="nav-logo">Aquapro Plombier</a>
+      <button class="burger" id="burger"><i class="fa fa-bars"></i></button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="index.html" class="nav-link">Accueil</a>
+        <a href="about.html" class="nav-link active">À propos</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link">Pages <i class="fa fa-angle-down"></i></a>
+          <div class="dropdown-panel">
+            <a href="booking.html">Réservation</a>
+            <a href="team.html">Techniciens</a>
+            <a href="testimonial.html">Témoignages</a>
+            <a href="404.html">Page 404</a>
           </div>
-          <div>
-            <p>Urgence 7j/7</p>
-            <h3>06.77.21.87.87</h3>
+        </div>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+      <div class="nav-phone">
+        <div class="nav-phone-icon"><i class="fa fa-phone-alt"></i></div>
+        <div>
+          <p>Urgence 7j/7</p>
+          <h5>06.77.21.87.87</h5>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="container">
+      <h1>À propos d'AquaPro</h1>
+      <nav class="breadcrumb">
+        <a href="index.html">Accueil</a>
+        <span>/</span>
+        <span>À propos</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ── ABOUT PRINCIPALE ── -->
+  <section class="about-pro-section">
+    <div class="container">
+      <div class="about-pro-grid">
+
+        <div class="about-img-wrap fade-up">
+          <img src="img/about-1.jpg" alt="Aquapro Plombier au travail">
+          <div class="about-img-overlay"></div>
+          <div class="about-img-cert">
+            <i class="fa fa-shield-alt"></i> Certifié RGE · Assuré décennal
+          </div>
+          <div class="about-img-badge">
+            <strong>18</strong>
+            <span>ans d'expérience</span>
+          </div>
+        </div>
+
+        <div class="fade-up" style="transition-delay:.15s">
+          <span class="about-label">Notre approche</span>
+          <h2 class="about-h2">Un service professionnel,<br>des tarifs <em>maîtrisés</em>.</h2>
+          <p class="about-intro">
+            Aquapro accompagne particuliers et professionnels en Île-de-France avec rigueur, réactivité et une transparence totale sur les tarifs.
+          </p>
+          <p class="about-body">
+            Dirigée par Mourad Necer, Aquapro est une entreprise à taille humaine où chaque intervention est prise en charge de A à Z par la même équipe — du diagnostic jusqu'à la remise en état. Pas d'intermédiaire, pas de sous-traitance : un interlocuteur unique, du premier appel à la réception des travaux.
+          </p>
+          <div class="engagements-grid">
+            <div class="eng-card">
+              <div class="eng-icon-wrap"><i class="fa fa-bolt"></i></div>
+              <div class="eng-content">
+                <strong>Réactivité</strong>
+                <span>Intervention rapide, délais confirmés dès le premier contact.</span>
+              </div>
+            </div>
+            <div class="eng-card">
+              <div class="eng-icon-wrap"><i class="fa fa-file-invoice"></i></div>
+              <div class="eng-content">
+                <strong>Devis gratuit</strong>
+                <span>Tarification claire et détaillée, aucune mauvaise surprise.</span>
+              </div>
+            </div>
+            <div class="eng-card">
+              <div class="eng-icon-wrap"><i class="fa fa-tools"></i></div>
+              <div class="eng-content">
+                <strong>Travail soigné</strong>
+                <span>Respect des normes, matériaux sélectionnés, chantier rendu propre.</span>
+              </div>
+            </div>
+            <div class="eng-card">
+              <div class="eng-icon-wrap"><i class="fa fa-user-check"></i></div>
+              <div class="eng-content">
+                <strong>Suivi complet</strong>
+                <span>Un interlocuteur unique du diagnostic à la réception.</span>
+              </div>
+            </div>
+          </div>
+          <div class="about-cta-bar">
+            <div class="cta-icon"><i class="fa fa-phone-alt"></i></div>
+            <div class="cta-text">
+              <p>Disponible 7j/7 — Devis gratuit</p>
+              <h3>06.77.21.87.87</h3>
+            </div>
+            <span class="cta-badge">Intervention possible le jour même</span>
           </div>
         </div>
 
       </div>
+    </div>
+  </section>
 
+  <!-- ── STATS ── -->
+  <div class="stats-pro-bar">
+    <div class="container">
+      <div class="stats-pro-grid">
+        <div class="stat-pro-item fade-up">
+          <i class="fa fa-history"></i>
+          <h2><span class="counter-val" data-target="15">0</span><span class="suffix">+</span></h2>
+          <p>Années d'expérience</p>
+        </div>
+        <div class="stat-pro-item fade-up" style="transition-delay:.1s">
+          <i class="fa fa-users"></i>
+          <h2><span class="counter-val" data-target="2400">0</span></h2>
+          <p>Clients satisfaits</p>
+        </div>
+        <div class="stat-pro-item fade-up" style="transition-delay:.2s">
+          <i class="fa fa-wrench"></i>
+          <h2><span class="counter-val" data-target="5800">0</span></h2>
+          <p>Interventions réalisées</p>
+        </div>
+        <div class="stat-pro-item fade-up" style="transition-delay:.3s">
+          <i class="fa fa-star"></i>
+          <h2><span class="counter-val" data-target="98">0</span><span class="suffix">%</span></h2>
+          <p>Satisfaction client</p>
+        </div>
+      </div>
     </div>
   </div>
-</section>
 
-<!-- FACTS -->
-<div class="facts-bar">
-  <div class="container">
-    <div class="grid-4">
-
-      <div class="fact-item fade-in">
-        <i class="fa fa-check fa-2x"></i>
-        <h2 class="counter" data-target="15">0</h2>
-        <p>Années d'expérience</p>
+  <!-- ── VALEURS ── -->
+  <section class="valeurs-section">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="about-label">Pourquoi nous choisir</span>
+        <h2>Ce qui fait la différence</h2>
+        <p>Des engagements concrets, tenus à chaque intervention, quel que soit le chantier.</p>
       </div>
-
-      <div class="fact-item fade-in">
-        <i class="fa fa-users-cog fa-2x"></i>
-        <h2 class="counter" data-target="35">0</h2>
-        <p>Techniciens experts</p>
+      <div class="valeurs-grid">
+        <div class="valeur-card fade-up">
+          <div class="valeur-icon"><i class="fa fa-clock"></i></div>
+          <h4>Disponibilité 7j/7</h4>
+          <p>Les urgences ne s'annoncent pas. Aquapro est joignable tous les jours, avec une intervention possible le jour même pour les situations urgentes.</p>
+        </div>
+        <div class="valeur-card fade-up" style="transition-delay:.1s">
+          <div class="valeur-icon"><i class="fa fa-balance-scale"></i></div>
+          <h4>Rapport qualité / prix</h4>
+          <p>Des matériaux durables, une main-d'œuvre qualifiée, et des tarifs honnêtes. Devis détaillé avant chaque intervention — sans surprise à la facturation.</p>
+        </div>
+        <div class="valeur-card fade-up" style="transition-delay:.2s">
+          <div class="valeur-icon"><i class="fa fa-award"></i></div>
+          <h4>Certifications & garanties</h4>
+          <p>Certifié RGE, assuré en décennale, avec garantie pièces et main-d'œuvre. Tous nos travaux respectent les normes en vigueur.</p>
+        </div>
+        <div class="valeur-card fade-up" style="transition-delay:.3s">
+          <div class="valeur-icon"><i class="fa fa-comments"></i></div>
+          <h4>Communication directe</h4>
+          <p>Vous parlez directement au professionnel en charge de votre chantier. Pas de plateforme, pas de centre d'appel — une relation de confiance, simple et directe.</p>
+        </div>
+        <div class="valeur-card fade-up" style="transition-delay:.4s">
+          <div class="valeur-icon"><i class="fa fa-broom"></i></div>
+          <h4>Chantier rendu propre</h4>
+          <p>Notre intervention ne s'arrête pas à la réparation. Nous remettons les lieux en état et partons sans laisser de trace.</p>
+        </div>
+        <div class="valeur-card fade-up" style="transition-delay:.5s">
+          <div class="valeur-icon"><i class="fa fa-building"></i></div>
+          <h4>Particuliers & professionnels</h4>
+          <p>Appartements, maisons, locaux commerciaux — nous intervenons dans tous types d'environnements avec le même niveau d'exigence.</p>
+        </div>
       </div>
-
-      <div class="fact-item fade-in">
-        <i class="fa fa-users fa-2x"></i>
-        <h2 class="counter" data-target="2400">0</h2>
-        <p>Clients satisfaits</p>
-      </div>
-
-      <div class="fact-item fade-in">
-        <i class="fa fa-wrench fa-2x"></i>
-        <h2 class="counter" data-target="5800">0</h2>
-        <p>Projets réalisés</p>
-      </div>
-
     </div>
-  </div>
-</div>
+  </section>
 
-<!-- FOOTER -->
+  <!-- ── ZONE D'INTERVENTION ── -->
+  <section class="zone-section">
+    <div class="container">
+      <div class="zone-grid">
+        <div class="zone-content fade-up">
+          <span class="about-label">Déplacements</span>
+          <h2 class="about-h2" style="font-size:32px;">Zone d'intervention</h2>
+          <p class="about-body">Aquapro intervient à Paris et dans l'ensemble de la petite couronne parisienne. Basés à Neuilly-Plaisance, nous couvrons l'est et l'ouest parisien avec des délais d'intervention rapides.</p>
+          <div class="zone-tags">
+            <span class="zone-tag"><i class="fa fa-map-marker-alt"></i> Paris (75)</span>
+            <span class="zone-tag"><i class="fa fa-map-marker-alt"></i> Neuilly-sur-Seine</span>
+            <span class="zone-tag"><i class="fa fa-map-marker-alt"></i> Levallois-Perret</span>
+            <span class="zone-tag"><i class="fa fa-map-marker-alt"></i> Boulogne-Billancourt</span>
+            <span class="zone-tag"><i class="fa fa-map-marker-alt"></i> Saint-Cloud</span>
+            <span class="zone-tag"><i class="fa fa-map-marker-alt"></i> Vincennes</span>
+            <span class="zone-tag"><i class="fa fa-map-marker-alt"></i> Joinville-le-Pont</span>
+            <span class="zone-tag"><i class="fa fa-map-marker-alt"></i> Petite couronne</span>
+          </div>
+        </div>
+        <div class="fade-up" style="transition-delay:.15s">
+          <div class="zone-map-wrap">
+            <div class="zone-map-icon">
+              <i class="fa fa-map-marked-alt"></i>
+              <h3>Île-de-France</h3>
+              <p>Paris &amp; petite couronne</p>
+            </div>
+            <a href="contact.html" class="zone-cta">Vérifier ma zone <i class="fa fa-arrow-right" style="margin-left:8px;font-size:12px;"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div>
           <h4>Adresse</h4>
-          <p><i class="fa fa-map-marker-alt"></i> 15 ter Chemin de Meaux<br> 93360 Neuilly Plaisance</p>
+          <p><i class="fa fa-map-marker-alt"></i> 15 ter Chemin de Meaux<br>93360 Neuilly Plaisance</p>
           <p><i class="fa fa-phone-alt"></i> 06.77.21.87.87</p>
           <p><i class="fa fa-envelope"></i> contact@aquaproplombier.fr</p>
           <div class="footer-social">
@@ -189,13 +656,12 @@
         </div>
         <div>
           <h4>Interventions</h4>
-
-<a class="footer-link" href="#">Urgences plomberie & chauffage</a>
-<a class="footer-link" href="#">Fuite d’eau – réparation rapide</a>
-<a class="footer-link" href="#">Débouchage canalisation</a>
-<a class="footer-link" href="#">Chauffage – dépannage & installation</a>
-<a class="footer-link" href="#">Chauffe-eau – entretien & pose</a>
-<a class="footer-link" href="#">Plomberie neuve & rénovation</a>
+          <a class="footer-link" href="#">Urgences plomberie &amp; chauffage</a>
+          <a class="footer-link" href="#">Fuite d'eau – réparation rapide</a>
+          <a class="footer-link" href="#">Débouchage canalisation</a>
+          <a class="footer-link" href="#">Chauffage – dépannage &amp; installation</a>
+          <a class="footer-link" href="#">Chauffe-eau – entretien &amp; pose</a>
+          <a class="footer-link" href="#">Plomberie neuve &amp; rénovation</a>
         </div>
         <div>
           <h4>Newsletter</h4>
@@ -207,20 +673,14 @@
         </div>
       </div>
     </div>
-<div class="footer-bottom">
+    <div class="footer-bottom">
       <div class="container footer-bottom-inner">
-         <span>© 2026 Aquapro Plombier. Tous droits réservés.</span>
-
-    <span>
-      Site conçu et administré par
-      <a href="https://cmd-solutions.fr" target="_blank">CMD Solutions</a>
-    </span>
-
-    <span>
-      <a href="mentions-legales.html" target="_blank">Mentions légales</a>
-      ·
-      <a href="politique-de-confidentialite.html" target="_blank">Politique de confidentialité</a>
-    </span>
+        <span>© 2026 Aquapro Plombier. Tous droits réservés.</span>
+        <span>Site conçu et administré par <a href="https://cmd-solutions.fr" target="_blank">CMD Solutions</a></span>
+        <span>
+          <a href="mentions-legales.html" target="_blank">Mentions légales</a>
+          · <a href="politique-de-confidentialite.html" target="_blank">Politique de confidentialité</a>
+        </span>
       </div>
     </div>
   </footer>
@@ -228,5 +688,33 @@
   <a href="#" class="back-to-top" id="back-to-top"><i class="fa fa-arrow-up"></i></a>
 
   <script src="main.js"></script>
+  <script>
+    // Fade-up on scroll
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+    // Counter animation
+    document.querySelectorAll('.counter-val').forEach(counter => {
+      const target = +counter.dataset.target;
+      const duration = 1800;
+      const step = target / (duration / 16);
+      let current = 0;
+      const obsC = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          obsC.unobserve(counter);
+          const timer = setInterval(() => {
+            current += step;
+            if (current >= target) { current = target; clearInterval(timer); }
+            counter.textContent = Math.floor(current).toLocaleString('fr-FR');
+          }, 16);
+        }
+      }, { threshold: 0.5 });
+      obsC.observe(counter);
+    });
+  </script>
 </body>
 </html>
