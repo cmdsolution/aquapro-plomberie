@@ -45,12 +45,20 @@
       <a href="index.html" class="nav-logo">Aquapro Plombier</a>
       <button class="burger" id="burger"><i class="fa fa-bars"></i></button>
       <div class="nav-menu" id="nav-menu">
-      <a href="index.html" class="nav-link active">Accueil</a>
-      <a href="about.html" class="nav-link">À propos</a>
-      <a href="services.html" class="nav-link">Services</a>
-      <a href="zone-intervention.html" class="nav-link">Zone d'intervention</a>
-      <a href="contact.html" class="nav-link">Contact</a>
-    </div>
+        <a href="index.html" class="nav-link active">Accueil</a>
+        <a href="about.html" class="nav-link">À propos</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link">Pages <i class="fa fa-angle-down"></i></a>
+          <div class="dropdown-panel">
+            <a href="booking.html">Réservation</a>
+            <a href="team.html">Techniciens</a>
+            <a href="testimonial.html">Témoignages</a>
+            <a href="404.html">Page 404</a>
+          </div>
+        </div>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
       <div class="nav-phone">
         <div class="nav-phone-icon"><i class="fa fa-phone-alt"></i></div>
         <div>
@@ -88,22 +96,6 @@
               <h5>Services de Plomberie & Réparation</h5>
               <h1>Services de Plomberie<br>Commerciale Efficaces</h1>
               <p>Des artisans certifiés, réactifs et transparents sur les prix pour tous vos besoins en plomberie.</p>
-              <div class="carousel-btns">
-                <a href="about.html" class="btn-primary">En savoir plus</a>
-                <a href="booking.html" class="btn-secondary">Devis gratuit</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-	  <div class="carousel-slide">
-        <img src="img/carousel-3.jpg" alt="Ton texte alternatif">
-        <div class="carousel-overlay">
-          <div class="container">
-            <div class="carousel-content">
-              <h5>Services de Plomberie & Réparation</h5>
-              <h1>Ton nouveau titre<br>sur deux lignes</h1>
-              <p>Ta description ici.</p>
               <div class="carousel-btns">
                 <a href="about.html" class="btn-primary">En savoir plus</a>
                 <a href="booking.html" class="btn-secondary">Devis gratuit</a>
@@ -620,10 +612,56 @@ Chaque intervention est réalisée avec des solutions sur mesure, parfaitement a
       </div>
       <div>
         <h4>Newsletter</h4>
-        <p>Restez informé de nos offres et conseils plomberie.</p>
-        <div class="newsletter-wrap">
-          <input type="email" placeholder="Votre email">
-          <button>S'inscrire</button>
+<p>Restez informé de nos offres et conseils plomberie.</p>
+
+<form id="newsletter-form" class="newsletter-wrap">
+  <input 
+    type="email" 
+    name="email" 
+    placeholder="Votre email" 
+    required
+  >
+  
+  <button type="submit">S'inscrire</button>
+</form>
+
+<p id="newsletter-message" style="display:none; margin-top:10px;"></p>
+
+<script>
+  const form = document.getElementById('newsletter-form');
+  const message = document.getElementById('newsletter-message');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const data = new FormData(form);
+
+    fetch("https://formspree.io/f/maqagqjp", {
+      method: "POST",
+      body: data,
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        message.style.display = "block";
+        message.style.color = "green";
+        message.textContent = "Merci pour votre inscription !";
+        form.reset();
+      } else {
+        message.style.display = "block";
+        message.style.color = "red";
+        message.textContent = "Une erreur est survenue. Réessayez.";
+      }
+    })
+    .catch(() => {
+      message.style.display = "block";
+      message.style.color = "red";
+      message.textContent = "Problème de connexion.";
+    });
+  });
+</script>
         </div>
       </div>
     </div>

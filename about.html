@@ -720,11 +720,57 @@
           <a class="footer-link" href="https://cmdsolution.github.io/aquapro-plomberie/services.html">Plomberie neuve &amp; rénovation</a>
         </div>
         <div>
-          <h4>Newsletter</h4>
-          <p>Restez informé de nos offres et conseils plomberie.</p>
-          <div class="newsletter-wrap">
-            <input type="email" placeholder="Votre email">
-            <button>S'inscrire</button>
+          <<h4>Newsletter</h4>
+<p>Restez informé de nos offres et conseils plomberie.</p>
+
+<form id="newsletter-form" class="newsletter-wrap">
+  <input 
+    type="email" 
+    name="email" 
+    placeholder="Votre email" 
+    required
+  >
+  
+  <button type="submit">S'inscrire</button>
+</form>
+
+<p id="newsletter-message" style="display:none; margin-top:10px;"></p>
+
+<script>
+  const form = document.getElementById('newsletter-form');
+  const message = document.getElementById('newsletter-message');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const data = new FormData(form);
+
+    fetch("https://formspree.io/f/maqagqjp", {
+      method: "POST",
+      body: data,
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        message.style.display = "block";
+        message.style.color = "green";
+        message.textContent = "Merci pour votre inscription !";
+        form.reset();
+      } else {
+        message.style.display = "block";
+        message.style.color = "red";
+        message.textContent = "Une erreur est survenue. Réessayez.";
+      }
+    })
+    .catch(() => {
+      message.style.display = "block";
+      message.style.color = "red";
+      message.textContent = "Problème de connexion.";
+    });
+  });
+</script>
           </div>
         </div>
       </div>
