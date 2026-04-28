@@ -14,8 +14,9 @@
 
 /* ── Base ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body { font-family: 'Open Sans', sans-serif; color: var(--dark); background: #fff; line-height: 1.65; overflow-x: hidden; }
+/* overflow-x sur html (pas body) pour ne pas casser position:fixed */
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body { font-family: 'Open Sans', sans-serif; color: var(--dark); background: #fff; line-height: 1.65; }
 img { max-width: 100%; display: block; }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; padding: 0; margin: 0; }
@@ -467,7 +468,7 @@ h1,h2,h3,h4,h5,h6 { font-family: 'Outfit', sans-serif; line-height: 1.2; }
 .svc-carousel-wrap {
   display: flex;
   align-items: stretch;
-  overflow: hidden;
+  overflow: visible;
 }
 .svc-sidebar {
   width: 260px;
@@ -482,9 +483,50 @@ h1,h2,h3,h4,h5,h6 { font-family: 'Outfit', sans-serif; line-height: 1.2; }
   color: #fff;
   font-size: 2rem;
   font-weight: 800;
-  transform: rotate(-90deg);
+  /* SUPPRIMÉ : transform: rotate(-90deg) — causait un contexte d'empilement bloquant les boutons flottants */
   white-space: nowrap;
   font-family: 'Outfit', sans-serif;
+}
+
+/* IMAGE BAND — remplace le bandeau bleu vertical */
+.svc-img-band {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background: linear-gradient(135deg, rgba(10,20,55,.82) 0%, rgba(47,102,198,.70) 60%, rgba(242,140,0,.45) 100%),
+              url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&auto=format&fit=crop&q=80') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+.svc-img-band-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.svc-img-band-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  text-shadow: 0 2px 12px rgba(0,0,0,.4);
+}
+.svc-img-band-sub {
+  font-family: 'Outfit', sans-serif;
+  font-size: .95rem;
+  font-weight: 600;
+  color: rgba(255,255,255,.80);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+}
+@media(max-width:600px) {
+  .svc-img-band { height: 160px; }
+  .svc-img-band-label { font-size: 1.6rem; }
 }
 .svc-carousel-content {
   flex: 1;
@@ -1275,4 +1317,33 @@ h1,h2,h3,h4,h5,h6 { font-family: 'Outfit', sans-serif; line-height: 1.2; }
 .svc-cards-full .svc-card {
   width: 100%;
   max-width: 100%;
+}.footer-brand {
+  display: flex;
+  flex-direction: column; /* met le texte sous le logo */
+  align-items: flex-start; /* aligné à gauche (plus pro) */
+  margin: 10px 0 15px;
+}
+
+.footer-brand img {
+  width: 40px;
+  height: auto;
+}
+
+.footer-brand span {
+  margin-top: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #fff; /* adapte selon ton thème */
+}.footer-brand {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 10px;
+}
+
+.footer-brand span {
+  margin-top: 0 !important;
+  display: inline-block;
+  line-height: 1;
+  white-space: nowrap;
 }

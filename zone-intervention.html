@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Chris M David">
   <meta name="copyright" content="© 2026 CMD solution">
-  <title>Zone d'intervention — Aquapro Plombier</title>
+  <title>Zone d'intervention — Plombier Seine-Saint-Denis, Val-de-Marne, Paris</title>
+  <meta name="description" content="Aquapro Plombier intervient dans un rayon de 50 km autour de Neuilly-Plaisance : Seine-Saint-Denis (93), Val-de-Marne (94), Paris (75), Seine-et-Marne (77) et toute l'Île-de-France.">
+  <link rel="canonical" href="https://cmdsolution.github.io/aquapro-plomberie/zone-intervention.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -277,14 +279,14 @@
 <!-- NAVBAR -->
 <nav class="navbar" id="navbar">
   <div class="container navbar-inner">
-    <a href="https://cmdsolution.github.io/aquapro-plomberie/index.html" class="nav-logo">Aquapro Plombier</a>
+    <a href="index.html" class="nav-logo">Aquapro Plombier</a>
     <button class="burger" id="burger"><i class="fa fa-bars"></i></button>
     <div class="nav-menu" id="nav-menu">
-      <a href="https://cmdsolution.github.io/aquapro-plomberie/index.html" class="nav-link">Accueil</a>
-      <a href="https://cmdsolution.github.io/aquapro-plomberie/about.html" class="nav-link">À propos</a>
-      <a href="https://cmdsolution.github.io/aquapro-plomberie/services.html" class="nav-link">Services</a>
-      <a href="https://cmdsolution.github.io/aquapro-plomberie/zone-intervention.html" class="nav-link active">Zone d'intervention</a>
-      <a href="https://cmdsolution.github.io/aquapro-plomberie/contact.html" class="nav-link">Contact</a>
+      <a href="index.html" class="nav-link">Accueil</a>
+      <a href="about.html" class="nav-link">À propos</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="zone-intervention.html" class="nav-link">Zone d'intervention</a>
+      <a href="contact.html" class="nav-link">Contact</a>
     </div>
     <div class="nav-phone">
       <div class="nav-phone-icon"><i class="fa fa-phone-alt"></i></div>
@@ -298,7 +300,7 @@
   <div class="container">
     <h1>Zone d'intervention</h1>
     <nav class="breadcrumb">
-      <a href="https://cmdsolution.github.io/aquapro-plomberie/index.html">Accueil</a>
+      <a href="index.html">Accueil</a>
       <span>/</span>
       <span>Zone d'intervention</span>
     </nav>
@@ -484,7 +486,7 @@
           <div class="zh-item"><div class="zh-icon"><i class="fa fa-phone-alt"></i></div> 06.77.21.87.87</div>
           <div class="zh-item"><div class="zh-icon"><i class="fa fa-envelope"></i></div> contact@aquaproplombier.fr</div>
         </div>
-        <a href="https://cmdsolution.github.io/aquapro-plomberie/contact.html" class="btn-primary">Prendre contact</a>
+        <a href="contact.html" class="btn-primary">Prendre contact</a>
       </div>
       <div class="zone-map-frame fade-in">
         <iframe
@@ -503,7 +505,7 @@
     <p>Appelez-nous ou réservez en ligne — réponse sous 30 minutes en semaine.</p>
     <div class="cta-btn-group">
       <a href="tel:0677218787" class="btn-cta-white"><i class="fa fa-phone-alt"></i> 06.77.21.87.87</a>
-      <a href="https://cmdsolution.github.io/aquapro-plomberie/contact.html" class="btn-cta-outline"><i class="fa fa-calendar-alt"></i> Réserver en ligne</a>
+      <a href="contact.html" class="btn-cta-outline"><i class="fa fa-calendar-alt"></i> Réserver en ligne</a>
     </div>
   </div>
 </div>
@@ -562,15 +564,8 @@
 
 <a href="#" class="back-to-top" id="back-to-top"><i class="fa fa-arrow-up"></i></a>
 
+<script src="main.js"></script>
 <script>
-  document.getElementById('burger').addEventListener('click', () => {
-    document.getElementById('nav-menu').classList.toggle('open');
-  });
-  window.addEventListener('scroll', () => {
-    document.getElementById('back-to-top').classList.toggle('visible', window.scrollY > 300);
-  });
-  const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:.12});
-  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
   const nlForm = document.getElementById('newsletter-form');
   const nlMsg = document.getElementById('newsletter-message');
   if (nlForm) {

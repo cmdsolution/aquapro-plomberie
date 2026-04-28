@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Chris M David">
   <meta name="copyright" content="© 2026 CMD solution">
-  <title>Contact — Aquapro Plombier</title>
+  <title>Contact & Devis gratuit — Aquapro Plombier Neuilly-Plaisance (93)</title>
+  <meta name="description" content="Contactez Aquapro Plombier pour un devis gratuit ou une urgence. Disponible 7j/7. Interventions en Seine-Saint-Denis, Val-de-Marne, Paris et Île-de-France. Tél : 06 77 21 87 87.">
+  <link rel="canonical" href="https://cmdsolution.github.io/aquapro-plomberie/contact.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -219,14 +221,14 @@
 <!-- NAVBAR -->
 <nav class="navbar" id="navbar">
   <div class="container navbar-inner">
-    <a href="https://cmdsolution.github.io/aquapro-plomberie/index.html" class="nav-logo">Aquapro Plombier</a>
+    <a href="index.html" class="nav-logo">Aquapro Plombier</a>
     <button class="burger" id="burger"><i class="fa fa-bars"></i></button>
     <div class="nav-menu" id="nav-menu">
-      <a href="https://cmdsolution.github.io/aquapro-plomberie/index.html" class="nav-link">Accueil</a>
-      <a href="https://cmdsolution.github.io/aquapro-plomberie/about.html" class="nav-link">À propos</a>
-      <a href="https://cmdsolution.github.io/aquapro-plomberie/services.html" class="nav-link">Services</a>
-      <a href="https://cmdsolution.github.io/aquapro-plomberie/zone-intervention.html" class="nav-link">Zone d'intervention</a>
-      <a href="https://cmdsolution.github.io/aquapro-plomberie/contact.html" class="nav-link active">Contact</a>
+      <a href="index.html" class="nav-link">Accueil</a>
+      <a href="about.html" class="nav-link">À propos</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="zone-intervention.html" class="nav-link">Zone d'intervention</a>
+      <a href="contact.html" class="nav-link">Contact</a>
     </div>
     <div class="nav-phone">
       <div class="nav-phone-icon"><i class="fa fa-phone-alt"></i></div>
@@ -240,7 +242,7 @@
   <div class="container">
     <h1>Contactez-nous</h1>
     <nav class="breadcrumb">
-      <a href="https://cmdsolution.github.io/aquapro-plomberie/index.html">Accueil</a>
+      <a href="index.html">Accueil</a>
       <span>/</span>
       <span>Contact</span>
     </nav>
@@ -248,33 +250,9 @@
 </div>
 
 <!-- URGENCY BAND -->
-<div class="urgency-band">
+<div class="urgency-band" style="margin-top:0;">
   <div class="container">
     <p><i class="fa fa-exclamation-circle"></i> Urgence plomberie ou chauffage ? Appelez directement : <a href="tel:+33677218787">06.77.21.87.87</a> — disponible 7j/7</p>
-  </div>
-</div>
-
-<!-- INFO STRIP -->
-<div class="contact-strip">
-  <div class="container">
-    <div class="contact-strip-grid">
-      <div class="cs-item">
-        <div class="cs-icon"><i class="fa fa-map-marker-alt"></i></div>
-        <div><p>Adresse</p><strong>15 ter Chemin de Meaux, 93360 Neuilly Plaisance</strong></div>
-      </div>
-      <div class="cs-item">
-        <div class="cs-icon"><i class="fa fa-phone-alt"></i></div>
-        <div><p>Téléphone</p><strong>06.77.21.87.87</strong></div>
-      </div>
-      <div class="cs-item">
-        <div class="cs-icon"><i class="fa fa-envelope"></i></div>
-        <div><p>Email</p><strong>contact@aquaproplombier.fr</strong></div>
-      </div>
-      <div class="cs-item">
-        <div class="cs-icon"><i class="fa fa-clock"></i></div>
-        <div><p>Horaires</p><strong>Lun–Ven 8h–20h · Urgences 7j/7</strong></div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -483,15 +461,8 @@
 
 <a href="#" class="back-to-top" id="back-to-top"><i class="fa fa-arrow-up"></i></a>
 
+<script src="main.js"></script>
 <script>
-  document.getElementById('burger').addEventListener('click', () => {
-    document.getElementById('nav-menu').classList.toggle('open');
-  });
-  window.addEventListener('scroll', () => {
-    document.getElementById('back-to-top').classList.toggle('visible', window.scrollY > 300);
-  });
-  const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:.1});
-  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
   const nlForm = document.getElementById('newsletter-form');
   const nlMsg = document.getElementById('newsletter-message');
   if (nlForm) {

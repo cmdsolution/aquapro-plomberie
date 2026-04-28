@@ -1,6 +1,26 @@
 (function () {
   'use strict';
 
+  // ========== ACTIVE NAV LINK (basé sur l'URL courante) ==========
+  (function setActiveNav() {
+    const path = window.location.pathname;
+    // Extrait le nom de fichier, ou 'index.html' si le chemin se termine par / ou est vide
+    const currentPage = path.endsWith('/') || path === ''
+      ? 'index.html'
+      : path.split('/').pop() || 'index.html';
+
+    document.querySelectorAll('.nav-link').forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href || href === '#') return;
+      const linkPage = href.split('/').pop() || 'index.html';
+      if (linkPage === currentPage) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  })();
+
   // ========== CAROUSEL ==========
   const slides = document.querySelectorAll('.carousel-slide');
   let current = 0;

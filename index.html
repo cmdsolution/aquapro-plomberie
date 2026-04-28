@@ -7,7 +7,46 @@
   <meta name="author" content="Chris M David">
   <meta name="copyright" content="© 2026 CMD solution">
   
-  <title>Aquapro Plombier</title>
+  <title>Aquapro Plombier — Plomberie & Chauffage à Neuilly-Plaisance (93), Paris et Île-de-France</title>
+  <meta name="description" content="Plombier chauffagiste à Neuilly-Plaisance (93). Dépannage, débouchage, installation et rénovation en Seine-Saint-Denis, Val-de-Marne, Paris et toute l'Île-de-France. Urgences 7j/7. Devis gratuit.">
+  <meta name="keywords" content="plombier Neuilly-Plaisance, plombier 93, chauffagiste Seine-Saint-Denis, débouchage urgence Paris, dépannage plomberie Île-de-France">
+  <link rel="canonical" href="https://cmdsolution.github.io/aquapro-plomberie/index.html">
+  <!-- Schema.org LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Plumber",
+    "name": "Aquapro Plombier",
+    "image": "https://cmdsolution.github.io/aquapro-plomberie/img/logo.webp",
+    "url": "https://cmdsolution.github.io/aquapro-plomberie/",
+    "telephone": "+33677218787",
+    "email": "contact@aquaproplombier.fr",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "15 ter Chemin de Meaux",
+      "addressLocality": "Neuilly-Plaisance",
+      "postalCode": "93360",
+      "addressCountry": "FR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 48.8667,
+      "longitude": 2.5167
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "08:00",
+        "closes": "20:00"
+      }
+    ],
+    "areaServed": ["Paris","Seine-Saint-Denis","Val-de-Marne","Seine-et-Marne","Île-de-France"],
+    "priceRange": "€€",
+    "description": "Plombier chauffagiste à Neuilly-Plaisance (93). Dépannage, débouchage, installation et rénovation en Île-de-France. Urgences 7j/7.",
+    "sameAs": []
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -45,18 +84,10 @@
       <a href="index.html" class="nav-logo">Aquapro Plombier</a>
       <button class="burger" id="burger"><i class="fa fa-bars"></i></button>
       <div class="nav-menu" id="nav-menu">
-        <a href="index.html" class="nav-link active">Accueil</a>
+        <a href="index.html" class="nav-link">Accueil</a>
         <a href="about.html" class="nav-link">À propos</a>
         <a href="services.html" class="nav-link">Services</a>
-        <div class="nav-dropdown">
-          <a href="#" class="nav-link">Pages <i class="fa fa-angle-down"></i></a>
-          <div class="dropdown-panel">
-            <a href="booking.html">Réservation</a>
-            <a href="team.html">Techniciens</a>
-            <a href="testimonial.html">Témoignages</a>
-            <a href="404.html">Page 404</a>
-          </div>
-        </div>
+        <a href="zone-intervention.html" class="nav-link">Zone d'intervention</a>
         <a href="contact.html" class="nav-link">Contact</a>
       </div>
       <div class="nav-phone">
@@ -81,8 +112,8 @@
               <h1>Services de Plomberie<br>Résidentielle Efficaces</h1>
               <p>Des artisans certifiés, réactifs et transparents sur les prix pour tous vos besoins en plomberie.</p>
               <div class="carousel-btns">
-                <a href="about.html" class="btn-primary">En savoir plus</a>
-                <a href="booking.html" class="btn-secondary">Devis gratuit</a>
+                <a href="services.html" class="btn-primary">En savoir plus</a>
+                <a href="contact.html" class="btn-secondary">Devis gratuit</a>
               </div>
             </div>
           </div>
@@ -97,8 +128,8 @@
               <h1>Services de Plomberie<br>Commerciale Efficaces</h1>
               <p>Des artisans certifiés, réactifs et transparents sur les prix pour tous vos besoins en plomberie.</p>
               <div class="carousel-btns">
-                <a href="about.html" class="btn-primary">En savoir plus</a>
-                <a href="booking.html" class="btn-secondary">Devis gratuit</a>
+                <a href="services.html" class="btn-primary">En savoir plus</a>
+                <a href="contact.html" class="btn-secondary">Devis gratuit</a>
               </div>
             </div>
           </div>
@@ -234,8 +265,8 @@ Chaque intervention est réalisée avec des solutions sur mesure, parfaitement a
   padding:10px 22px 10px 30px;
   border-radius:6px;
 
-  background:#1F4E79; /* bleu */
-  border:1px solid #1F4E79;
+  background:var(--primary);
+  border:1px solid var(--primary);
 
   font-size:15px;
   text-decoration:none;
@@ -260,18 +291,18 @@ Chaque intervention est réalisée avec des solutions sur mesure, parfaitement a
   transform:translateY(-50%);
   border-top:4px solid transparent;
   border-bottom:4px solid transparent;
-  border-left:6px solid #F28C00; /* orange */
+  border-left:6px solid var(--secondary);
 }
 
 /* HOVER (INVERSION) */
 .lux-marquee__item:hover{
   background:#ffffff;
-  color:#1F4E79;
+  color:var(--primary);
   transform:translateY(-2px);
 }
 
 .lux-marquee__item:hover::before{
-  border-left-color:#F28C00;
+  border-left-color:var(--secondary);
 }
 
 /* animation */
@@ -340,14 +371,18 @@ Chaque intervention est réalisée avec des solutions sur mesure, parfaitement a
     </div>
   </div>
 
-  <!-- SERVICES CAROUSEL -->
+  <!-- SERVICES SECTION -->
   <section class="section-pad" style="padding-left:0;padding-right:0;">
-    <div class="svc-carousel-wrap">
-      <div class="svc-sidebar">
-        <h2>18 Ans d'Expérience</h2>
+    <!-- IMAGE BAND (remplace le bandeau bleu vertical) -->
+    <div class="svc-img-band">
+      <div class="svc-img-band-overlay">
+        <span class="svc-img-band-label">18 ans d'expérience</span>
+        <span class="svc-img-band-sub">Artisan certifié · Île-de-France</span>
       </div>
-      <div class="svc-carousel-content">
-        <div style="padding:0 0 0 48px;">
+    </div>
+    <div class="svc-carousel-wrap" style="display:block;">
+      <div class="svc-carousel-content" style="padding:0;">
+        <div style="padding:0 48px;">
         <h6 class="label-upper">Nos Services</h6>
 <h1 class="section-title mb-5">Explorez Nos Services</h1>
 
@@ -422,7 +457,6 @@ Chaque intervention est réalisée avec des solutions sur mesure, parfaitement a
 </div>
 
 </div>
-        </div>
       </div>
     </div>
   </section>
@@ -509,7 +543,7 @@ Chaque intervention est réalisée avec des solutions sur mesure, parfaitement a
                 <img src="img/testimonial-2.jpg" alt="Jean-Karl M.">
                 <div class="testi-stars">★★★★★</div>
                 <h5>Jean-Karl M.</h5>
-                <p class="testi-job">Versailles</p>
+                <p class="testi-job">Vincennes</p>
               </div>
             </div>
           </div>
@@ -542,7 +576,7 @@ Chaque intervention est réalisée avec des solutions sur mesure, parfaitement a
             <div class="testi-item">
               <div class="testi-text"><p>"Une urgence un samedi matin, réglée en deux heures chrono. Équipe sérieuse, matériel propre, aucune mauvaise surprise sur la facture."</p></div>
               <div class="testi-bottom">
-                <img src="img/testimonial-1.jpg" alt="François M.">
+                <img src="img/testimonial-4.jpg" alt="François M.">
                 <div class="testi-stars">★★★★★</div>
                 <h5>François M.</h5>
                 <p class="testi-job">Neuilly Plaisance</p>
@@ -554,7 +588,7 @@ Chaque intervention est réalisée avec des solutions sur mesure, parfaitement a
             <div class="testi-item">
               <div class="testi-text"><p>"Devis clair, intervention rapide, résultat impeccable. Enfin un plombier sur lequel on peut compter. Je les recommande sans réserve à mes voisins."</p></div>
               <div class="testi-bottom">
-                <img src="img/testimonial-2.jpg" alt="Isabelle T.">
+                <img src="img/testimonial-3.jpg" alt="Isabelle T.">
                 <div class="testi-stars">★★★★★</div>
                 <h5>Isabelle T.</h5>
                 <p class="testi-job">Rosny-sous-Bois</p>
@@ -583,6 +617,10 @@ Chaque intervention est réalisée avec des solutions sur mesure, parfaitement a
     <div class="footer-grid">
       <div>
         <h4>Adresse</h4>
+		<div class="footer-brand">
+  <img src="img/logo.webp" alt="Aquapro Plombier">
+  <span>Aquapro Plombier</span>
+</div>
         <p><i class="fa fa-map-marker-alt"></i> 15 ter Chemin de Meaux<br> 93360 Neuilly Plaisance</p>
         <p><i class="fa fa-phone-alt"></i> 06.77.21.87.87</p>
         <p><i class="fa fa-envelope"></i> contact@aquaproplombier.fr</p>
