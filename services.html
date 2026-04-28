@@ -5,41 +5,280 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Chris M David">
   <meta name="copyright" content="© 2026 CMD solution">
-
   <title>Services — Aquapro Plombier</title>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <style>
     #fuites, #debouchage, #urgence, #chauffe-eau, #chauffage, #renovation {
       scroll-margin-top: 90px;
     }
-    #svc-track.svc-cards-track {
-      grid-template-columns: 1fr !important;
+
+    /* ── SERVICES INTRO BAR ── */
+    .svc-intro-bar {
+      background: var(--light);
+      border-bottom: 1px solid var(--border);
+      padding: 0;
+      overflow-x: auto;
     }
+    .svc-intro-links {
+      display: flex;
+      gap: 0;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .svc-intro-links a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 20px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--dark);
+      border-bottom: 3px solid transparent;
+      transition: .25s;
+      white-space: nowrap;
+    }
+    .svc-intro-links a:hover, .svc-intro-links a.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+    .svc-intro-links a i { font-size: .9rem; color: var(--primary); }
+
+    /* ── SERVICE CARDS GRID ── */
+    .svc-full-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .svc-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 400px;
+    }
+    .svc-row:nth-child(even) .svc-row-img  { order: 2; }
+    .svc-row:nth-child(even) .svc-row-body { order: 1; }
+
+    .svc-row-img {
+      position: relative;
+      overflow: hidden;
+    }
+    .svc-row-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .6s ease;
+    }
+    .svc-row:hover .svc-row-img img { transform: scale(1.04); }
+    .svc-row-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(47,102,198,.35) 0%, transparent 60%);
+    }
+    .svc-row-badge {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      background: var(--secondary);
+      color: #fff;
+      padding: 6px 14px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .svc-row-body {
+      background: #fff;
+      padding: 52px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .svc-row:nth-child(even) .svc-row-body {
+      background: var(--light);
+    }
+    .svc-row-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      margin-bottom: 22px;
+      flex-shrink: 0;
+    }
+    .svc-row-body h3 {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 8px;
+      font-family: 'Outfit', sans-serif;
+    }
+    .svc-row-body .svc-sub {
+      font-size: .9rem;
+      color: var(--secondary);
+      font-weight: 600;
+      font-family: 'Outfit', sans-serif;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+    .svc-row-body > p {
+      font-size: .93rem;
+      color: var(--grey);
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+    .svc-checks {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .svc-checks li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: .88rem;
+      color: var(--dark);
+      line-height: 1.55;
+    }
+    .svc-checks li i {
+      color: #22c55e;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .svc-cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: .88rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 2px;
+      width: fit-content;
+      transition: .25s;
+    }
+    .svc-cta-link:hover { color: var(--primary-d); gap: 14px; }
+
+    @media(max-width:900px) {
+      .svc-row { grid-template-columns: 1fr; min-height: auto; }
+      .svc-row:nth-child(even) .svc-row-img  { order: 0; }
+      .svc-row:nth-child(even) .svc-row-body { order: 0; }
+      .svc-row-img { height: 280px; }
+      .svc-row-body { padding: 36px 28px; }
+    }
+    @media(max-width:600px) {
+      .svc-row-body { padding: 28px 20px; }
+      .svc-row-img { height: 220px; }
+    }
+
+    /* ── NUMBERS STRIP ── */
+    .svc-numbers {
+      background: var(--primary);
+      padding: 52px 0;
+    }
+    .svc-numbers-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      text-align: center;
+    }
+    @media(max-width:768px){ .svc-numbers-grid { grid-template-columns: 1fr 1fr; gap: 24px; } }
+    @media(max-width:480px){ .svc-numbers-grid { grid-template-columns: 1fr; } }
+    .svc-num-item {
+      padding: 12px 20px;
+      border-right: 1px solid rgba(255,255,255,.15);
+    }
+    .svc-num-item:last-child { border: none; }
+    .svc-num-item .num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .svc-num-item .num span { color: var(--secondary); }
+    .svc-num-item p { color: rgba(255,255,255,.75); font-size: .85rem; margin: 0; }
+
+    /* ── BOOKING FORM (redesigned) ── */
+    .booking-section {
+      background: linear-gradient(rgba(10,20,50,.82), rgba(10,20,50,.82)),
+        url('https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=1400&auto=format&fit=crop&q=80') center/cover no-repeat;
+      padding: 80px 0;
+    }
+    .booking-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 56px;
+      align-items: center;
+    }
+    @media(max-width:900px) { .booking-inner { grid-template-columns: 1fr; } }
+    .booking-left h2 { color: #fff; font-size: clamp(1.5rem, 3vw, 2.2rem); margin-bottom: 16px; }
+    .booking-left p { color: rgba(255,255,255,.75); font-size: .95rem; line-height: 1.7; margin-bottom: 28px; }
+    .booking-features-list { display: flex; flex-direction: column; gap: 14px; }
+    .bf-item { display: flex; align-items: center; gap: 12px; color: rgba(255,255,255,.85); font-size: .9rem; }
+    .bf-icon { width: 38px; height: 38px; background: rgba(255,255,255,.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--secondary); font-size: 1rem; }
+    .booking-form-card {
+      background: #fff;
+      padding: 40px 36px;
+    }
+    .booking-form-card h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 24px; color: var(--dark); }
+    .booking-form-card input,
+    .booking-form-card select,
+    .booking-form-card textarea {
+      width: 100%;
+      background: var(--light);
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: .9rem;
+      color: var(--dark);
+      outline: none;
+      transition: .25s;
+      margin-bottom: 14px;
+      display: block;
+    }
+    .booking-form-card input:focus,
+    .booking-form-card select:focus,
+    .booking-form-card textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(47,102,198,.1);
+    }
+    .bform-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media(max-width:600px){ .bform-row2 { grid-template-columns: 1fr; } }
+    .bform-row2 input, .bform-row2 select { margin-bottom: 0; }
   </style>
 </head>
-
 <body>
 
-  <!-- TOPBAR -->
-  <div class="topbar">
-    <div class="container topbar-inner">
-<div class="logo">
-  <a href="index.html">
-    <img src="img/logo.webp" alt="Aquapro Plombier">
-  </a>
-  <div class="logo-tagline">Plomberie - Chauffage - Rénovation</div>
-</div> 
-      <div class="topbar-info">
-        <span><i class="fa fa-map-marker-alt"></i> 15 ter Chemin de Meaux, 93360 Neuilly Plaisance</span>
-        <span><i class="fa fa-envelope"></i> contact@aquaproplombier.fr</span>
-
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="container topbar-inner">
+    <div class="logo">
+      <a href="index.html"><img src="img/logo.webp" alt="Aquapro Plombier"></a>
+      <div class="logo-tagline">Plomberie - Chauffage - Rénovation</div>
+    </div>
+    <div class="topbar-info">
+      <span><i class="fa fa-map-marker-alt"></i> 15 ter Chemin de Meaux, 93360 Neuilly Plaisance</span>
+      <span><i class="fa fa-envelope"></i> contact@aquaproplombier.fr</span>
       <div class="topbar-social">
         <a href="#"><i class="fab fa-facebook-f"></i></a>
         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -47,303 +286,331 @@
         <a href="#"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
-
   </div>
 </div>
 
 <!-- NAVBAR -->
 <nav class="navbar" id="navbar">
   <div class="container navbar-inner">
-
-    <a href="index.html" class="nav-logo">Aquapro Plombier</a>
-
-    <button class="burger" id="burger">
-      <i class="fa fa-bars"></i>
-    </button>
-
+    <a href="https://cmdsolution.github.io/aquapro-plomberie/index.html" class="nav-logo">Aquapro Plombier</a>
+    <button class="burger" id="burger"><i class="fa fa-bars"></i></button>
     <div class="nav-menu" id="nav-menu">
-
-      <a href="index.html" class="nav-link">Accueil</a>
-      <a href="about.html" class="nav-link">À propos</a>
-      <a href="services.html" class="nav-link active">Services</a>
-
-      <div class="nav-dropdown">
-        <a href="#" class="nav-link">Pages <i class="fa fa-angle-down"></i></a>
-        <div class="dropdown-panel">
-          <a href="booking.html">Réservation</a>
-          <a href="team.html">Techniciens</a>
-          <a href="testimonial.html">Témoignages</a>
-          <a href="404.html">Page 404</a>
-        </div>
-      </div>
-
-      <a href="contact.html" class="nav-link">Contact</a>
-
+      <a href="https://cmdsolution.github.io/aquapro-plomberie/index.html" class="nav-link">Accueil</a>
+      <a href="https://cmdsolution.github.io/aquapro-plomberie/about.html" class="nav-link">À propos</a>
+      <a href="https://cmdsolution.github.io/aquapro-plomberie/services.html" class="nav-link active">Services</a>
+      <a href="https://cmdsolution.github.io/aquapro-plomberie/zone-intervention.html" class="nav-link">Zone d'intervention</a>
+      <a href="https://cmdsolution.github.io/aquapro-plomberie/contact.html" class="nav-link">Contact</a>
     </div>
-
     <div class="nav-phone">
-      <div class="nav-phone-icon">
-        <i class="fa fa-phone-alt"></i>
-      </div>
-      <div>
-        <p>Urgence 7j/7</p>
-        <h5>06.77.21.87.87</h5>
-      </div>
+      <div class="nav-phone-icon"><i class="fa fa-phone-alt"></i></div>
+      <div><p>Urgence 7j/7</p><h5>06.77.21.87.87</h5></div>
     </div>
-
   </div>
 </nav>
 
 <!-- HERO -->
-<div class="page-hero">
+<div class="page-hero" style="background-image: linear-gradient(rgba(10,20,55,.78), rgba(10,20,55,.78)), url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1400&auto=format&fit=crop&q=80'); background-size:cover; background-position:center;">
   <div class="container">
     <h1>Nos Services</h1>
     <nav class="breadcrumb">
-      <a href="index.html">Accueil</a>
+      <a href="https://cmdsolution.github.io/aquapro-plomberie/index.html">Accueil</a>
       <span>/</span>
       <span>Services</span>
     </nav>
   </div>
 </div>
 
-  <!-- SERVICES CAROUSEL -->
-  <section class="section-pad" style="padding-left:0;padding-right:0;">
-    <div class="svc-carousel-wrap">
-      <div class="svc-sidebar">
-        <h2>Nos Prestations</h2>
+<!-- ANCHOR NAV -->
+<div class="svc-intro-bar">
+  <div class="container">
+    <div class="svc-intro-links">
+      <a href="#fuites"><i class="fa fa-wrench"></i> Fuites</a>
+      <a href="#debouchage"><i class="fa fa-toilet"></i> Débouchage</a>
+      <a href="#urgence"><i class="fa fa-exclamation-triangle"></i> Urgences</a>
+      <a href="#chauffe-eau"><i class="fa fa-fire"></i> Chauffe-eau</a>
+      <a href="#chauffage"><i class="fa fa-thermometer-half"></i> Chauffage</a>
+      <a href="#renovation"><i class="fa fa-shower"></i> Rénovation</a>
+    </div>
+  </div>
+</div>
+
+<!-- NUMBERS STRIP -->
+<div class="svc-numbers">
+  <div class="container">
+    <div class="svc-numbers-grid">
+      <div class="svc-num-item">
+        <div class="num">15<span>+</span></div>
+        <p>Ans d'expérience</p>
       </div>
-      <div class="svc-carousel-content">
-        <div style="padding:0 0 0 48px;">
+      <div class="svc-num-item">
+        <div class="num">2<span>h</span></div>
+        <p>Délai d'intervention moyen</p>
+      </div>
+      <div class="svc-num-item">
+        <div class="num">7<span>j/7</span></div>
+        <p>Service d'urgence</p>
+      </div>
+      <div class="svc-num-item">
+        <div class="num">500<span>+</span></div>
+        <p>Clients satisfaits / an</p>
+      </div>
+    </div>
+  </div>
+</div>
 
-
-<div class="svc-cards-track svc-cards-full" id="svc-track">
+<!-- SERVICES ALTERNATING ROWS -->
+<div class="svc-full-grid">
 
   <!-- Réparation de fuites -->
-  <div id="fuites" class="svc-card">
-    <div class="svc-card-icon"><i class="fa fa-wrench fa-2x"></i></div>
-    <h4>Réparation de fuites</h4>
-    <p>Détection et réparation rapide de fuites sur robinets, tuyaux et installations sanitaires.</p>
-    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Une fuite, même légère, peut rapidement causer des dégâts importants : humidité, moisissures, augmentation de votre facture d’eau ou détérioration des installations. Une intervention rapide permet d’éviter des réparations coûteuses.</p>
-    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Nous localisons précisément l’origine de la fuite, qu’elle soit visible ou cachée (tuyaux, robinets, joints, chasse d’eau…). Chaque intervention est précédée d’un diagnostic pour garantir une réparation efficace et durable.</p>
-    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Nous intervenons rapidement, 7j/7, pour sécuriser votre installation et stopper la fuite au plus vite.</p>
- 
+  <div id="fuites" class="svc-row">
+    <div class="svc-row-img">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&auto=format&fit=crop&q=80" alt="Réparation de fuites">
+      <div class="svc-row-img-overlay"></div>
+      <span class="svc-row-badge">Service n°1</span>
+    </div>
+    <div class="svc-row-body">
+      <div class="svc-row-icon"><i class="fa fa-wrench fa-lg"></i></div>
+      <div class="svc-sub">Plomberie</div>
+      <h3>Réparation de fuites</h3>
+      <p>Détection et réparation rapide de fuites sur robinets, tuyaux et installations sanitaires. Une intervention immédiate pour protéger votre logement.</p>
+      <ul class="svc-checks">
+        <li><i class="fa fa-check-circle"></i> Une fuite, même légère, peut rapidement causer des dégâts importants : humidité, moisissures, augmentation de votre facture d'eau.</li>
+        <li><i class="fa fa-check-circle"></i> Localisation précise de l'origine — visible ou cachée (tuyaux, robinets, joints, chasse d'eau…). Diagnostic avant intervention garantie.</li>
+        <li><i class="fa fa-check-circle"></i> Intervention rapide 7j/7 pour sécuriser votre installation et stopper la fuite au plus vite.</li>
+      </ul>
+      <a href="https://cmdsolution.github.io/aquapro-plomberie/contact.html" class="svc-cta-link">Demander une intervention <i class="fa fa-arrow-right"></i></a>
+    </div>
   </div>
 
   <!-- Débouchage -->
-  <div id="debouchage" class="svc-card">
-    <div class="svc-card-icon"><i class="fa fa-toilet fa-2x"></i></div>
-    <h4>Débouchage</h4>
-    <p>Débouchage haute pression pour éviers, WC, douches et canalisations.</p>
-    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Une canalisation bouchée peut rapidement devenir un problème majeur : mauvaises odeurs, évacuation lente ou blocage complet.</p>
-    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Nous utilisons des techniques de débouchage haute pression pour éliminer efficacement les bouchons sans endommager vos installations. Cette méthode permet un nettoyage en profondeur et limite les risques de récidive.</p>
-    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Nous intervenons sur tous types d’équipements : éviers, WC, douches, baignoires et canalisations.</p>
-
+  <div id="debouchage" class="svc-row">
+    <div class="svc-row-img">
+      <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&auto=format&fit=crop&q=80" alt="Débouchage canalisation">
+      <div class="svc-row-img-overlay"></div>
+      <span class="svc-row-badge">Haute pression</span>
+    </div>
+    <div class="svc-row-body">
+      <div class="svc-row-icon"><i class="fa fa-toilet fa-lg"></i></div>
+      <div class="svc-sub">Assainissement</div>
+      <h3>Débouchage</h3>
+      <p>Débouchage haute pression pour éviers, WC, douches et canalisations. Résultats efficaces sans endommager vos installations.</p>
+      <ul class="svc-checks">
+        <li><i class="fa fa-check-circle"></i> Une canalisation bouchée peut rapidement devenir un problème majeur : mauvaises odeurs, évacuation lente ou blocage complet.</li>
+        <li><i class="fa fa-check-circle"></i> Technique haute pression pour éliminer les bouchons en profondeur — limite fortement les risques de récidive.</li>
+        <li><i class="fa fa-check-circle"></i> Intervention sur tous types d'équipements : éviers, WC, douches, baignoires et canalisations.</li>
+      </ul>
+      <a href="https://cmdsolution.github.io/aquapro-plomberie/contact.html" class="svc-cta-link">Demander une intervention <i class="fa fa-arrow-right"></i></a>
+    </div>
   </div>
 
   <!-- Urgences -->
-  <div id="urgence" class="svc-card">
-    <div class="svc-card-icon"><i class="fa fa-exclamation-triangle fa-2x"></i></div>
-    <h4>Urgences plomberie & chauffage</h4>
-    <p>Intervention rapide 7j/7 pour fuites, pannes de chauffage et situations urgentes.</p>
-    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Certaines situations ne peuvent pas attendre : fuite importante, panne de chauffage, canalisation bouchée ou dégât des eaux.</p>
-    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Nous assurons un service d’urgence 24h/24 et 7j/7 pour intervenir rapidement et limiter les dégâts. Notre priorité est de sécuriser votre logement et de rétablir le bon fonctionnement de vos installations.</p>
-    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Une intervention rapide permet souvent d’éviter des réparations plus lourdes et coûteuses.</p>
-
+  <div id="urgence" class="svc-row">
+    <div class="svc-row-img">
+      <img src="https://images.unsplash.com/photo-1504309092620-4d0ec726efa4?w=800&auto=format&fit=crop&q=80" alt="Urgence plomberie">
+      <div class="svc-row-img-overlay"></div>
+      <span class="svc-row-badge">24h / 7j</span>
+    </div>
+    <div class="svc-row-body">
+      <div class="svc-row-icon"><i class="fa fa-exclamation-triangle fa-lg"></i></div>
+      <div class="svc-sub">Dépannage</div>
+      <h3>Urgences plomberie &amp; chauffage</h3>
+      <p>Intervention rapide 7j/7 pour fuites importantes, pannes de chauffage et toute situation d'urgence. Nous sécurisons votre logement en priorité.</p>
+      <ul class="svc-checks">
+        <li><i class="fa fa-check-circle"></i> Certaines situations ne peuvent pas attendre : fuite importante, panne de chauffage, canalisation bouchée ou dégât des eaux.</li>
+        <li><i class="fa fa-check-circle"></i> Service d'urgence 24h/24 et 7j/7 — priorité à la sécurisation de votre logement et au rétablissement des installations.</li>
+        <li><i class="fa fa-check-circle"></i> Intervenir rapidement permet souvent d'éviter des réparations plus lourdes et plus coûteuses.</li>
+      </ul>
+      <a href="tel:+33677218787" class="svc-cta-link">Appeler maintenant <i class="fa fa-phone-alt"></i></a>
+    </div>
   </div>
 
   <!-- Chauffe-eau -->
-  <div id="chauffe-eau" class="svc-card">
-    <div class="svc-card-icon"><i class="fa fa-fire fa-2x"></i></div>
-    <h4>Chauffe-eau</h4>
-    <p>Installation, entretien et remplacement de chauffe-eau toutes énergies.</p>
-    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Le chauffe-eau est un élément essentiel de votre confort quotidien. Une panne peut rapidement devenir contraignante.</p>
-    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Nous assurons l’installation, l’entretien et le remplacement de tous types de chauffe-eau (électrique, gaz…). Nous vous conseillons sur les solutions adaptées à votre logement et à votre consommation.</p>
-    <p class="check-line-blue"><i class="fa fa-check text-success"></i> En cas de panne, nous intervenons rapidement pour rétablir votre production d’eau chaude dans les meilleurs délais.</p>
-
+  <div id="chauffe-eau" class="svc-row">
+    <div class="svc-row-img">
+      <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&auto=format&fit=crop&q=80" alt="Chauffe-eau">
+      <div class="svc-row-img-overlay"></div>
+      <span class="svc-row-badge">Toutes énergies</span>
+    </div>
+    <div class="svc-row-body">
+      <div class="svc-row-icon"><i class="fa fa-fire fa-lg"></i></div>
+      <div class="svc-sub">Eau chaude sanitaire</div>
+      <h3>Chauffe-eau</h3>
+      <p>Installation, entretien et remplacement de chauffe-eau toutes énergies (électrique, gaz, thermodynamique). Conseil sur la solution la plus adaptée à votre logement.</p>
+      <ul class="svc-checks">
+        <li><i class="fa fa-check-circle"></i> Le chauffe-eau est un élément essentiel de votre confort quotidien. Une panne peut rapidement devenir contraignante.</li>
+        <li><i class="fa fa-check-circle"></i> Installation, entretien et remplacement de tous types de chauffe-eau. Conseil personnalisé sur la meilleure solution pour votre consommation.</li>
+        <li><i class="fa fa-check-circle"></i> En cas de panne, intervention rapide pour rétablir votre production d'eau chaude dans les meilleurs délais.</li>
+      </ul>
+      <a href="https://cmdsolution.github.io/aquapro-plomberie/contact.html" class="svc-cta-link">Demander un devis <i class="fa fa-arrow-right"></i></a>
+    </div>
   </div>
 
   <!-- Chauffage -->
-  <div id="chauffage" class="svc-card">
-    <div class="svc-card-icon"><i class="fa fa-thermometer-half fa-2x"></i></div>
-    <h4>Chauffage</h4>
-    <p>Installation et dépannage de chaudières, radiateurs et systèmes de chauffage.</p>
-    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Un système de chauffage défaillant impacte directement votre confort, surtout en période hivernale.</p>
-    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Nous intervenons pour le dépannage, l’installation et l’entretien de vos équipements : chaudières, radiateurs et systèmes de chauffage.</p>
-    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Notre objectif est de vous garantir une installation fiable, performante et adaptée à vos besoins, tout en assurant une intervention rapide en cas de problème.</p>
-
+  <div id="chauffage" class="svc-row">
+    <div class="svc-row-img">
+      <img src="https://images.unsplash.com/photo-1631857367154-c3e4b0c39a5c?w=800&auto=format&fit=crop&q=80" alt="Chauffage">
+      <div class="svc-row-img-overlay"></div>
+      <span class="svc-row-badge">Dépannage rapide</span>
+    </div>
+    <div class="svc-row-body">
+      <div class="svc-row-icon"><i class="fa fa-thermometer-half fa-lg"></i></div>
+      <div class="svc-sub">Confort thermique</div>
+      <h3>Chauffage</h3>
+      <p>Installation, dépannage et entretien de chaudières, radiateurs et systèmes de chauffage. Interventions rapides, surtout en période hivernale.</p>
+      <ul class="svc-checks">
+        <li><i class="fa fa-check-circle"></i> Un système de chauffage défaillant impacte directement votre confort, surtout en période hivernale.</li>
+        <li><i class="fa fa-check-circle"></i> Dépannage, installation et entretien de chaudières, radiateurs et systèmes de chauffage — fiabilité garantie.</li>
+        <li><i class="fa fa-check-circle"></i> Installations adaptées à vos besoins, performantes et durables, avec intervention rapide en cas de problème.</li>
+      </ul>
+      <a href="https://cmdsolution.github.io/aquapro-plomberie/contact.html" class="svc-cta-link">Demander un devis <i class="fa fa-arrow-right"></i></a>
+    </div>
   </div>
 
   <!-- Plomberie neuve & rénovation -->
-  <div id="renovation" class="svc-card">
-    <div class="svc-card-icon"><i class="fa fa-shower fa-2x"></i></div>
-    <h4>Plomberie neuve & rénovation</h4>
-    <p>Création et rénovation complète de réseaux de plomberie pour habitations et professionnels.</p>
-    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Que ce soit pour une construction ou une rénovation, une installation de plomberie doit être fiable, durable et parfaitement adaptée à votre usage.</p>
-    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Nous réalisons des installations complètes : réseaux d’eau, sanitaires, raccordements… en respectant les normes en vigueur.</p>
-    <p class="check-line-blue"><i class="fa fa-check text-success"></i> Chaque projet est étudié sur mesure afin de garantir un résultat fonctionnel, esthétique et durable dans le temps.</p>
-
+  <div id="renovation" class="svc-row">
+    <div class="svc-row-img">
+      <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&auto=format&fit=crop&q=80" alt="Rénovation plomberie">
+      <div class="svc-row-img-overlay"></div>
+      <span class="svc-row-badge">Sur mesure</span>
+    </div>
+    <div class="svc-row-body">
+      <div class="svc-row-icon"><i class="fa fa-shower fa-lg"></i></div>
+      <div class="svc-sub">Construction &amp; Rénovation</div>
+      <h3>Plomberie neuve &amp; rénovation</h3>
+      <p>Création et rénovation complète de réseaux de plomberie pour habitations et professionnels. Chaque projet est étudié sur mesure.</p>
+      <ul class="svc-checks">
+        <li><i class="fa fa-check-circle"></i> Construction ou rénovation : une installation de plomberie doit être fiable, durable et adaptée à votre usage.</li>
+        <li><i class="fa fa-check-circle"></i> Installations complètes : réseaux d'eau, sanitaires, raccordements… dans le respect des normes en vigueur.</li>
+        <li><i class="fa fa-check-circle"></i> Chaque projet étudié sur mesure pour un résultat fonctionnel, esthétique et durable dans le temps.</li>
+      </ul>
+      <a href="https://cmdsolution.github.io/aquapro-plomberie/contact.html" class="svc-cta-link">Demander un devis <i class="fa fa-arrow-right"></i></a>
+    </div>
   </div>
 
 </div>
 
-</div>
+<!-- BOOKING SECTION -->
+<div class="booking-section">
+  <div class="container">
+    <div class="booking-inner">
+      <div class="booking-left fade-in">
+        <h2>Réservez une intervention en quelques clics</h2>
+        <p>Notre équipe est disponible 7j/7 pour répondre à vos urgences et planifier vos travaux. Remplissez le formulaire, nous vous rappelons sous 30 minutes.</p>
+        <div class="booking-features-list">
+          <div class="bf-item"><div class="bf-icon"><i class="fa fa-bolt"></i></div> Réponse sous 30 minutes en semaine</div>
+          <div class="bf-item"><div class="bf-icon"><i class="fa fa-shield-alt"></i></div> Devis gratuit et sans engagement</div>
+          <div class="bf-item"><div class="bf-icon"><i class="fa fa-map-marker-alt"></i></div> Intervention toute l'Île-de-France</div>
+          <div class="bf-item"><div class="bf-icon"><i class="fa fa-star"></i></div> Artisans certifiés et assurés</div>
+        </div>
+      </div>
+      <div class="booking-form-card fade-in">
+        <h3>Réserver une Intervention</h3>
+        <form id="booking-form" action="https://formspree.io/f/xeevvwdj" method="POST">
+          <div class="bform-row2" style="margin-bottom:14px;">
+            <input type="text" name="nom" placeholder="Votre nom" required>
+            <input type="email" name="email" placeholder="Votre email" required>
+          </div>
+          <div class="bform-row2" style="margin-bottom:14px;">
+            <select name="service" required>
+              <option value="">Choisir un service</option>
+              <option value="reparation-fuite">Réparation de fuite</option>
+              <option value="debouchage">Débouchage</option>
+              <option value="chauffage">Chauffage</option>
+              <option value="chauffe-eau">Chauffe-eau</option>
+              <option value="urgence">Urgence</option>
+            </select>
+            <input type="date" name="date">
+          </div>
+          <textarea name="message" placeholder="Message ou demande spéciale" style="min-height:100px;resize:vertical;"></textarea>
+          <input type="hidden" name="_subject" value="Nouvelle demande d'intervention - AquaPro">
+          <input type="hidden" name="_next" value="https://cmdsolution.github.io/aquapro-plomberie/">
+          <button type="submit" class="btn-primary w-full" style="margin-top:6px;">Réserver maintenant</button>
+        </form>
+        <div id="form-success" style="display:none; background:#22c55e; color:#fff; padding:16px 24px; border-radius:8px; margin-top:16px; text-align:center; font-size:1rem;">
+          ✅ Votre demande a bien été envoyée ! Nous vous contacterons très rapidement.
         </div>
       </div>
     </div>
-  </section>
-  <!-- BOOKING BANNER -->
-<div class="booking-banner">
-  <div class="booking-bg">
-    <h1>Une urgence ? Nous intervenons rapidement</h1>
-    <h3>7 Jours sur 7</h3>
-    <a href="tel:+33677218787" class="btn-play-wrap">
-      <span class="btn-play-btn">Appel d'urgence</span>
-    </a>
-  </div>
-</div>
-<div class="container" style="position:relative;z-index:2;">
-  <div class="booking-form-wrap">
-    <h2>Réserver une Intervention</h2>
-    <form id="booking-form" action="https://formspree.io/f/xeevvwdj" method="POST">
-  <div class="bform-row">
-    <input type="text" name="nom" placeholder="Votre nom" required>
-    <input type="email" name="email" placeholder="Votre email" required>
-  </div>
-  <div class="bform-row">
-    <select name="service" required>
-      <option value="">Choisir un service</option>
-      <option value="reparation-fuite">Réparation de fuite</option>
-      <option value="debouchage">Débouchage</option>
-      <option value="chauffage">Chauffage</option>
-      <option value="chauffe-eau">Chauffe-eau</option>
-      <option value="urgence">Urgence</option>
-    </select>
-    <input type="date" name="date">
-  </div>
-  <textarea name="message" placeholder="Message ou demande spéciale"></textarea>
-
-  <input type="hidden" name="_subject" value="Nouvelle demande d'intervention - AquaPro">
-  <input type="hidden" name="_next" value="https://cmdsolution.github.io/aquapro-plomberie/">
-
-  <button type="submit" class="btn-primary w-full">
-    Réserver maintenant
-  </button>
-</form>
-<div id="form-success" style="display:none; background:#22c55e; color:#fff; padding:16px 24px; border-radius:8px; margin-top:16px; text-align:center; font-size:1.1rem;">
-  ✅ Votre demande a bien été envoyée ! Nous vous contacterons très rapidement.
-</div>
   </div>
 </div>
 
 <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <h4>Adresse</h4>
-          <p><i class="fa fa-map-marker-alt"></i> 15 ter Chemin de Meaux<br> 93360 Neuilly Plaisance</p>
-          <p><i class="fa fa-phone-alt"></i> 06.77.21.87.87</p>
-          <p><i class="fa fa-envelope"></i> contact@aquaproplombier.fr</p>
-          <div class="footer-social">
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-          </div>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Adresse</h4>
+        <p><i class="fa fa-map-marker-alt"></i> 15 ter Chemin de Meaux<br>93360 Neuilly Plaisance</p>
+        <p><i class="fa fa-phone-alt"></i> 06.77.21.87.87</p>
+        <p><i class="fa fa-envelope"></i> contact@aquaproplombier.fr</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
         </div>
-        <div>
-          <h4>Horaires</h4>
-          <h6>Lundi — Vendredi :</h6>
-          <p class="mb-4">8h00 — 20h00</p>
-          <h6>Samedi — Dimanche :</h6>
-          <p>Urgences uniquement</p>
-        </div>
-        <div>
-          <h4>Interventions</h4>
+      </div>
+      <div>
+        <h4>Horaires</h4>
+        <h6>Lundi — Vendredi :</h6>
+        <p class="mb-4">8h00 — 20h00</p>
+        <h6>Samedi — Dimanche :</h6>
+        <p>Urgences uniquement</p>
+      </div>
+      <div>
+        <h4>Interventions</h4>
+        <a class="footer-link" href="#urgence">Urgences plomberie &amp; chauffage</a>
+        <a class="footer-link" href="#fuites">Fuite d'eau – réparation rapide</a>
+        <a class="footer-link" href="#debouchage">Débouchage canalisation</a>
+        <a class="footer-link" href="#chauffage">Chauffage – dépannage &amp; installation</a>
+        <a class="footer-link" href="#chauffe-eau">Chauffe-eau – entretien &amp; pose</a>
+        <a class="footer-link" href="#renovation">Plomberie neuve &amp; rénovation</a>
+      </div>
+      <div>
+        <h4>Newsletter</h4>
+        <p>Restez informé de nos offres et conseils plomberie.</p>
+        <form id="newsletter-form" class="newsletter-wrap">
+          <input type="email" name="email" placeholder="Votre email" required>
+          <button type="submit">S'inscrire</button>
+        </form>
+        <p id="newsletter-message" style="display:none; margin-top:10px;"></p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <span>© 2026 Aquapro Plombier. Tous droits réservés.</span>
+      <span>Site conçu et administré par <a href="https://cmd-solutions.fr" target="_blank">CMD Solutions</a></span>
+      <span><a href="mentions-legales.html" target="_blank">Mentions légales</a> · <a href="politique-de-confidentialite.html" target="_blank">Politique de confidentialité</a></span>
+    </div>
+  </div>
+</footer>
 
-<a class="footer-link" href="#">Urgences plomberie & chauffage</a>
-<a class="footer-link" href="#">Fuite d’eau – réparation rapide</a>
-<a class="footer-link" href="#">Débouchage canalisation</a>
-<a class="footer-link" href="#">Chauffage – dépannage & installation</a>
-<a class="footer-link" href="#">Chauffe-eau – entretien & pose</a>
-<a class="footer-link" href="#">Plomberie neuve & rénovation</a>
-        </div>
-        <div>
-          <<h4>Newsletter</h4>
-<p>Restez informé de nos offres et conseils plomberie.</p>
-
-<form id="newsletter-form" class="newsletter-wrap">
-  <input 
-    type="email" 
-    name="email" 
-    placeholder="Votre email" 
-    required
-  >
-  
-  <button type="submit">S'inscrire</button>
-</form>
-
-<p id="newsletter-message" style="display:none; margin-top:10px;"></p>
+<a href="#" class="back-to-top" id="back-to-top"><i class="fa fa-arrow-up"></i></a>
 
 <script>
-  const form = document.getElementById('newsletter-form');
-  const message = document.getElementById('newsletter-message');
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const data = new FormData(form);
-
-    fetch("https://formspree.io/f/maqagqjp", {
-      method: "POST",
-      body: data,
-      headers: {
-        'Accept': 'application/json'
-      }
-    })
-    .then(response => {
-      if (response.ok) {
-        message.style.display = "block";
-        message.style.color = "green";
-        message.textContent = "Merci pour votre inscription !";
-        form.reset();
-      } else {
-        message.style.display = "block";
-        message.style.color = "red";
-        message.textContent = "Une erreur est survenue. Réessayez.";
-      }
-    })
-    .catch(() => {
-      message.style.display = "block";
-      message.style.color = "red";
-      message.textContent = "Problème de connexion.";
+  // Newsletter
+  const nlForm = document.getElementById('newsletter-form');
+  const nlMsg = document.getElementById('newsletter-message');
+  if (nlForm) {
+    nlForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      fetch("https://formspree.io/f/maqagqjp", { method:"POST", body:new FormData(nlForm), headers:{'Accept':'application/json'} })
+        .then(r => { nlMsg.style.display='block'; nlMsg.style.color= r.ok ? 'green' : 'red'; nlMsg.textContent= r.ok ? 'Merci pour votre inscription !' : 'Une erreur est survenue.'; if(r.ok) nlForm.reset(); })
+        .catch(() => { nlMsg.style.display='block'; nlMsg.style.color='red'; nlMsg.textContent='Problème de connexion.'; });
     });
+  }
+  // Burger
+  document.getElementById('burger').addEventListener('click', () => {
+    document.getElementById('nav-menu').classList.toggle('open');
   });
+  // Back to top
+  window.addEventListener('scroll', () => {
+    document.getElementById('back-to-top').classList.toggle('visible', window.scrollY > 300);
+  });
+  // Fade in
+  const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:.12});
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
 </script>
-          </div>
-        </div>
-      </div>
-    </div>
- <div class="footer-bottom">
-      <div class="container footer-bottom-inner">
-         <span>© 2026 Aquapro Plombier. Tous droits réservés.</span>
-
-    <span>
-      Site conçu et administré par
-      <a href="https://cmd-solutions.fr" target="_blank">CMD Solutions</a>
-    </span>
-
-    <span>
-      <a href="mentions-legales.html" target="_blank">Mentions légales</a>
-      ·
-      <a href="politique-de-confidentialite.html" target="_blank">Politique de confidentialité</a>
-    </span>
-      </div>
-    </div>
-  </footer>
-
-  <a href="#" class="back-to-top" id="back-to-top"><i class="fa fa-arrow-up"></i></a>
-
-  <script src="main.js"></script>
 </body>
 </html>

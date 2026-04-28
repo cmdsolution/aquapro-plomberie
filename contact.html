@@ -5,33 +5,207 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Chris M David">
   <meta name="copyright" content="© 2026 CMD solution">
-
   <title>Contact — Aquapro Plombier</title>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="style.css">
-</head>
+  <style>
 
+    /* ── INFO STRIP ── */
+    .contact-strip {
+      background: var(--primary);
+      padding: 0;
+    }
+    .contact-strip-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    @media(max-width:900px){ .contact-strip-grid { grid-template-columns: 1fr 1fr; } }
+    @media(max-width:480px){ .contact-strip-grid { grid-template-columns: 1fr; } }
+    .cs-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 22px 24px;
+      border-right: 1px solid rgba(255,255,255,.12);
+    }
+    .cs-item:last-child { border: none; }
+    .cs-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(255,255,255,.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .cs-item p { color: rgba(255,255,255,.65); font-size: .76rem; margin: 0 0 3px; }
+    .cs-item strong { color: #fff; font-size: .88rem; font-family: 'Outfit', sans-serif; display: block; }
+
+    /* ── MAIN CONTACT SECTION ── */
+    .contact-main {
+      padding: 80px 0;
+      background: #fff;
+    }
+    .contact-main-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: 64px;
+      align-items: start;
+    }
+    @media(max-width:900px){ .contact-main-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+    /* Left column */
+    .contact-left-top {
+      margin-bottom: 36px;
+    }
+    .contact-left-top p { color: var(--grey); font-size: .94rem; line-height: 1.75; margin-top: 14px; }
+
+    .contact-cards { display: flex; flex-direction: column; gap: 16px; margin-bottom: 36px; }
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      background: var(--light);
+      padding: 20px 22px;
+      border-left: 4px solid var(--primary);
+      transition: .25s;
+    }
+    .contact-card:hover { border-left-color: var(--secondary); transform: translateX(4px); }
+    .cc-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .cc-text label { display: block; font-size: .74rem; color: var(--grey); text-transform: uppercase; letter-spacing: .07em; font-family: 'Outfit', sans-serif; font-weight: 700; margin-bottom: 3px; }
+    .cc-text span { font-size: .96rem; font-weight: 600; color: var(--dark); }
+
+    /* Map */
+    .contact-map-wrap {
+      overflow: hidden;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 20px rgba(0,0,0,.07);
+    }
+
+    /* Right: form card */
+    .contact-form-card {
+      background: var(--dark);
+      padding: 44px 40px;
+    }
+    @media(max-width:600px){ .contact-form-card { padding: 28px 20px; } }
+    .contact-form-card .form-header { margin-bottom: 28px; }
+    .contact-form-card .form-header .label-upper { color: var(--secondary); }
+    .contact-form-card .form-header h2 { color: #fff; font-size: 1.7rem; margin-bottom: 8px; }
+    .contact-form-card .form-header p { color: rgba(255,255,255,.65); font-size: .88rem; line-height: 1.6; }
+
+    .cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+    @media(max-width:580px){ .cf-row { grid-template-columns: 1fr; } }
+    .cf-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+    .cf-group label { font-size: .76rem; font-weight: 700; font-family: 'Outfit', sans-serif; color: rgba(255,255,255,.55); text-transform: uppercase; letter-spacing: .06em; }
+    .cf-group input,
+    .cf-group select,
+    .cf-group textarea {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 13px 16px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: .9rem;
+      color: #fff;
+      outline: none;
+      transition: .25s;
+      width: 100%;
+    }
+    .cf-group input::placeholder,
+    .cf-group textarea::placeholder { color: rgba(255,255,255,.3); }
+    .cf-group input:focus,
+    .cf-group select:focus,
+    .cf-group textarea:focus {
+      border-color: var(--secondary);
+      background: rgba(255,255,255,.11);
+    }
+    .cf-group select option { background: var(--dark); color: #fff; }
+    .cf-group textarea { min-height: 130px; resize: vertical; }
+    .btn-submit-form {
+      width: 100%;
+      background: var(--secondary);
+      color: #fff;
+      border: none;
+      padding: 16px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: .3s;
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .btn-submit-form:hover { background: #c94d12; }
+
+    /* ── URGENCY BAND ── */
+    .urgency-band {
+      background: var(--secondary);
+      padding: 24px 0;
+      text-align: center;
+    }
+    .urgency-band p { color: #fff; font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 1rem; margin: 0; display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .urgency-band a { color: #fff; font-weight: 800; font-size: 1.15rem; text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ── FAQ SECTION ── */
+    .faq-section { padding: 72px 0; background: var(--light); }
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px; }
+    @media(max-width:768px){ .faq-grid { grid-template-columns: 1fr; } }
+    .faq-item {
+      background: #fff;
+      border: 1px solid var(--border);
+      padding: 22px 24px;
+      transition: .25s;
+    }
+    .faq-item:hover { border-color: var(--primary); }
+    .faq-item h5 {
+      font-family: 'Outfit', sans-serif;
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .faq-item h5::before {
+      content: 'Q.';
+      color: var(--primary);
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .faq-item p { font-size: .87rem; color: var(--grey); line-height: 1.65; margin: 0; padding-left: 24px; }
+  </style>
+</head>
 <body>
 
-  <!-- TOPBAR -->
-  <div class="topbar">
-    <div class="container topbar-inner">
-<div class="logo">
-  <a href="index.html">
-    <img src="img/logo.webp" alt="Aquapro Plombier">
-  </a>
-  <div class="logo-tagline">Plomberie - Chauffage - Rénovation</div>
-</div> 
-      <div class="topbar-info">
-        <span><i class="fa fa-map-marker-alt"></i> 15 ter Chemin de Meaux, 93360 Neuilly Plaisance</span>
-        <span><i class="fa fa-envelope"></i> contact@aquaproplombier.fr</span>
-
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="container topbar-inner">
+    <div class="logo">
+      <a href="index.html"><img src="img/logo.webp" alt="Aquapro Plombier"></a>
+      <div class="logo-tagline">Plomberie - Chauffage - Rénovation</div>
+    </div>
+    <div class="topbar-info">
+      <span><i class="fa fa-map-marker-alt"></i> 15 ter Chemin de Meaux, 93360 Neuilly Plaisance</span>
+      <span><i class="fa fa-envelope"></i> contact@aquaproplombier.fr</span>
       <div class="topbar-social">
         <a href="#"><i class="fab fa-facebook-f"></i></a>
         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -39,284 +213,295 @@
         <a href="#"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
-
   </div>
 </div>
 
 <!-- NAVBAR -->
 <nav class="navbar" id="navbar">
   <div class="container navbar-inner">
-
-    <a href="index.html" class="nav-logo">Aquapro Plombier</a>
-
-    <button class="burger" id="burger">
-      <i class="fa fa-bars"></i>
-    </button>
-
+    <a href="https://cmdsolution.github.io/aquapro-plomberie/index.html" class="nav-logo">Aquapro Plombier</a>
+    <button class="burger" id="burger"><i class="fa fa-bars"></i></button>
     <div class="nav-menu" id="nav-menu">
-
-      <a href="index.html" class="nav-link">Accueil</a>
-      <a href="about.html" class="nav-link">À propos</a>
-      <a href="services.html" class="nav-link">Services</a>
-
-      <div class="nav-dropdown">
-        <a href="#" class="nav-link">Pages <i class="fa fa-angle-down"></i></a>
-        <div class="dropdown-panel">
-          <a href="booking.html">Réservation</a>
-          <a href="team.html">Techniciens</a>
-          <a href="testimonial.html">Témoignages</a>
-          <a href="404.html">Page 404</a>
-        </div>
-      </div>
-
-      <a href="contact.html" class="nav-link active">Contact</a>
-
+      <a href="https://cmdsolution.github.io/aquapro-plomberie/index.html" class="nav-link">Accueil</a>
+      <a href="https://cmdsolution.github.io/aquapro-plomberie/about.html" class="nav-link">À propos</a>
+      <a href="https://cmdsolution.github.io/aquapro-plomberie/services.html" class="nav-link">Services</a>
+      <a href="https://cmdsolution.github.io/aquapro-plomberie/zone-intervention.html" class="nav-link">Zone d'intervention</a>
+      <a href="https://cmdsolution.github.io/aquapro-plomberie/contact.html" class="nav-link active">Contact</a>
     </div>
-
     <div class="nav-phone">
-      <div class="nav-phone-icon">
-        <i class="fa fa-phone-alt"></i>
-      </div>
-      <div>
-        <p>Urgence 7j/7</p>
-        <h5>06.77.21.87.87</h5>
-      </div>
+      <div class="nav-phone-icon"><i class="fa fa-phone-alt"></i></div>
+      <div><p>Urgence 7j/7</p><h5>06.77.21.87.87</h5></div>
     </div>
-
   </div>
 </nav>
 
 <!-- HERO -->
-<div class="page-hero">
+<div class="page-hero" style="background-image: linear-gradient(rgba(10,20,55,.78), rgba(10,20,55,.78)), url('https://images.unsplash.com/photo-1573497620053-ea5300f94f21?w=1400&auto=format&fit=crop&q=80'); background-size:cover; background-position:center top;">
   <div class="container">
     <h1>Contactez-nous</h1>
     <nav class="breadcrumb">
-      <a href="index.html">Accueil</a>
+      <a href="https://cmdsolution.github.io/aquapro-plomberie/index.html">Accueil</a>
       <span>/</span>
       <span>Contact</span>
     </nav>
   </div>
 </div>
 
-<!-- CONTACT -->
-<section class="section-pad">
+<!-- URGENCY BAND -->
+<div class="urgency-band">
   <div class="container">
+    <p><i class="fa fa-exclamation-circle"></i> Urgence plomberie ou chauffage ? Appelez directement : <a href="tel:+33677218787">06.77.21.87.87</a> — disponible 7j/7</p>
+  </div>
+</div>
 
-    <div class="contact-grid">
+<!-- INFO STRIP -->
+<div class="contact-strip">
+  <div class="container">
+    <div class="contact-strip-grid">
+      <div class="cs-item">
+        <div class="cs-icon"><i class="fa fa-map-marker-alt"></i></div>
+        <div><p>Adresse</p><strong>15 ter Chemin de Meaux, 93360 Neuilly Plaisance</strong></div>
+      </div>
+      <div class="cs-item">
+        <div class="cs-icon"><i class="fa fa-phone-alt"></i></div>
+        <div><p>Téléphone</p><strong>06.77.21.87.87</strong></div>
+      </div>
+      <div class="cs-item">
+        <div class="cs-icon"><i class="fa fa-envelope"></i></div>
+        <div><p>Email</p><strong>contact@aquaproplombier.fr</strong></div>
+      </div>
+      <div class="cs-item">
+        <div class="cs-icon"><i class="fa fa-clock"></i></div>
+        <div><p>Horaires</p><strong>Lun–Ven 8h–20h · Urgences 7j/7</strong></div>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!-- MAIN CONTACT -->
+<section class="contact-main">
+  <div class="container">
+    <div class="contact-main-grid">
+
+      <!-- LEFT COLUMN -->
       <div class="fade-in">
+        <div class="contact-left-top">
+          <span class="label-upper">Restons en contact</span>
+          <h2 class="section-title">Une question ? Nous sommes là.</h2>
+          <p>Notre équipe répond à vos questions du lundi au vendredi de 8h à 20h. Pour les urgences, notre astreinte est disponible 7j/7 — réponse garantie.</p>
+        </div>
 
-        <h6 class="label-upper">Restons en contact</h6>
-
-        <h2 class="section-title">Une question ? Nous sommes là.</h2>
-
-        <p class="text-muted mb-4">
-          Notre équipe répond à vos questions du lundi au vendredi de 8h à 20h. Pour les urgences, notre astreinte est disponible 7j/7.
-        </p>
-
-        <div class="contact-items">
-
-          <div class="contact-item">
-            <div class="ci-icon"><i class="fa fa-map-marker-alt"></i></div>
-            <div>
-              <strong>Adresse</strong>
+        <div class="contact-cards">
+          <div class="contact-card">
+            <div class="cc-icon"><i class="fa fa-map-marker-alt"></i></div>
+            <div class="cc-text">
+              <label>Adresse</label>
               <span>15 ter Chemin de Meaux, 93360 Neuilly Plaisance</span>
             </div>
           </div>
-
-          <div class="contact-item">
-            <div class="ci-icon"><i class="fa fa-phone-alt"></i></div>
-            <div>
-              <strong>Téléphone</strong>
+          <a href="tel:+33677218787" class="contact-card" style="text-decoration:none;">
+            <div class="cc-icon" style="background:var(--secondary);"><i class="fa fa-phone-alt"></i></div>
+            <div class="cc-text">
+              <label>Téléphone — cliquez pour appeler</label>
               <span>06.77.21.87.87</span>
             </div>
-          </div>
-
-          <div class="contact-item">
-            <div class="ci-icon"><i class="fa fa-envelope"></i></div>
-            <div>
-              <strong>Email</strong>
+          </a>
+          <a href="mailto:contact@aquaproplombier.fr" class="contact-card" style="text-decoration:none;">
+            <div class="cc-icon"><i class="fa fa-envelope"></i></div>
+            <div class="cc-text">
+              <label>Email</label>
               <span>contact@aquaproplombier.fr</span>
             </div>
-          </div>
-
-          <div class="contact-item">
-            <div class="ci-icon"><i class="fa fa-clock"></i></div>
-            <div>
-              <strong>Horaires</strong>
+          </a>
+          <div class="contact-card">
+            <div class="cc-icon"><i class="fa fa-clock"></i></div>
+            <div class="cc-text">
+              <label>Horaires d'ouverture</label>
               <span>Lun–Ven 8h–20h · Urgences 7j/7</span>
             </div>
           </div>
-
         </div>
 
-        <div class="map-wrap">
+        <div class="contact-map-wrap">
           <iframe
             src="https://www.google.com/maps?q=15+ter+Chemin+de+Meaux,+93360+Neuilly+Plaisance&output=embed"
             width="100%"
-            height="260"
-            style="border:0;"
+            height="280"
+            style="border:0;display:block;"
             allowfullscreen=""
             loading="lazy">
           </iframe>
         </div>
-
       </div>
 
-      <!-- FORM -->
-      <div class="contact-form-box fade-in">
-
-        <h3>Envoyez-nous un message</h3>
+      <!-- RIGHT: FORM -->
+      <div class="contact-form-card fade-in">
+        <div class="form-header">
+          <span class="label-upper">Formulaire de contact</span>
+          <h2>Envoyez-nous un message</h2>
+          <p>Remplissez le formulaire ci-dessous, nous vous répondons sous 24h en semaine.</p>
+        </div>
 
         <form id="contact-form" action="https://formspree.io/f/mqewwvbw" method="POST">
-
-          <div class="form-row">
-            <div class="form-group">
+          <div class="cf-row">
+            <div class="cf-group">
               <label>Prénom et nom</label>
               <input type="text" name="nom" placeholder="Jean Dupont" required>
             </div>
-
-            <div class="form-group">
+            <div class="cf-group">
               <label>Email</label>
               <input type="email" name="email" placeholder="jean@email.fr" required>
             </div>
           </div>
-
-          <div class="form-group">
+          <div class="cf-row">
+            <div class="cf-group">
+              <label>Téléphone</label>
+              <input type="tel" name="telephone" placeholder="06 xx xx xx xx">
+            </div>
+            <div class="cf-group">
+              <label>Type de demande</label>
+              <select name="type">
+                <option value="">Sélectionner...</option>
+                <option value="devis">Demande de devis</option>
+                <option value="urgence">Urgence</option>
+                <option value="information">Information</option>
+                <option value="autre">Autre</option>
+              </select>
+            </div>
+          </div>
+          <div class="cf-group">
             <label>Sujet</label>
-            <input type="text" name="sujet" placeholder="Ex : demande de devis..." required>
+            <input type="text" name="sujet" placeholder="Ex : demande de devis plomberie..." required>
           </div>
-
-          <div class="form-group">
+          <div class="cf-group">
             <label>Message</label>
-            <textarea name="message" placeholder="Décrivez votre demande..." style="min-height:150px;"></textarea>
+            <textarea name="message" placeholder="Décrivez votre demande en détail..."></textarea>
           </div>
-
           <input type="hidden" name="_subject" value="Nouveau message de contact — AquaPro">
-
-          <button type="submit" class="form-submit">
-            Envoyer le message
+          <button type="submit" class="btn-submit-form">
+            <i class="fa fa-paper-plane"></i> Envoyer le message
           </button>
-
         </form>
 
-        <div id="form-success" style="display:none; background:#22c55e; color:#fff; padding:16px 24px; border-radius:8px; margin-top:16px; text-align:center; font-size:1.1rem;">
+        <div id="form-success" style="display:none; background:#22c55e; color:#fff; padding:16px 24px; margin-top:16px; text-align:center; font-size:1rem;">
           ✅ Votre message a bien été envoyé ! Nous vous répondrons très rapidement.
         </div>
-
       </div>
 
     </div>
+  </div>
+</section>
 
+<!-- FAQ SECTION -->
+<section class="faq-section">
+  <div class="container">
+    <div class="text-center" style="max-width:620px;margin:0 auto;">
+      <span class="label-upper">Questions fréquentes</span>
+      <h2 class="section-title">Vous avez des questions ?</h2>
+      <p class="text-muted">Voici les réponses aux questions les plus courantes. Pour toute autre demande, n'hésitez pas à nous contacter.</p>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item fade-in">
+        <h5>Intervenez-vous le week-end ?</h5>
+        <p>Oui, notre service d'urgence est disponible 7j/7. En dehors des urgences, nos interventions se font du lundi au vendredi de 8h à 20h.</p>
+      </div>
+      <div class="faq-item fade-in">
+        <h5>Quel est votre délai d'intervention ?</h5>
+        <p>Pour les urgences, notre délai d'intervention moyen est inférieur à 2 heures. Pour les interventions planifiées, nous nous adaptons à vos disponibilités.</p>
+      </div>
+      <div class="faq-item fade-in">
+        <h5>Proposez-vous des devis gratuits ?</h5>
+        <p>Oui, nous établissons des devis gratuits et sans engagement pour toutes vos demandes, qu'il s'agisse de travaux de rénovation ou de simples réparations.</p>
+      </div>
+      <div class="faq-item fade-in">
+        <h5>Quelles zones couvrez-vous ?</h5>
+        <p>Nous intervenons dans tout l'est parisien et l'Île-de-France (93, 94, 75, 77, 92). Consultez notre <a href="zone-intervention.html" style="color:var(--primary);font-weight:600;">page zones d'intervention</a> pour plus de détails.</p>
+      </div>
+      <div class="faq-item fade-in">
+        <h5>Êtes-vous assurés et certifiés ?</h5>
+        <p>Oui, tous nos techniciens sont qualifiés et assurés. Nous possédons toutes les certifications nécessaires pour intervenir en plomberie et chauffage.</p>
+      </div>
+      <div class="faq-item fade-in">
+        <h5>Acceptez-vous les paiements en ligne ?</h5>
+        <p>Nous acceptons plusieurs moyens de paiement : carte bancaire, virement, chèque et espèces. N'hésitez pas à nous contacter pour plus d'informations.</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <h4>Adresse</h4>
-          <p><i class="fa fa-map-marker-alt"></i> 15 ter Chemin de Meaux<br> 93360 Neuilly Plaisance</p>
-          <p><i class="fa fa-phone-alt"></i> 06.77.21.87.87</p>
-          <p><i class="fa fa-envelope"></i> contact@aquaproplombier.fr</p>
-          <div class="footer-social">
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-          </div>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Adresse</h4>
+        <p><i class="fa fa-map-marker-alt"></i> 15 ter Chemin de Meaux<br>93360 Neuilly Plaisance</p>
+        <p><i class="fa fa-phone-alt"></i> 06.77.21.87.87</p>
+        <p><i class="fa fa-envelope"></i> contact@aquaproplombier.fr</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
         </div>
-        <div>
-          <h4>Horaires</h4>
-          <h6>Lundi — Vendredi :</h6>
-          <p class="mb-4">8h00 — 20h00</p>
-          <h6>Samedi — Dimanche :</h6>
-          <p>Urgences uniquement</p>
-        </div>
-        <div>
-          <h4>Interventions</h4>
-          <a class="footer-link" href="#">Urgences plomberie & chauffage</a>
-          <a class="footer-link" href="#">Fuite d'eau – réparation rapide</a>
-          <a class="footer-link" href="#">Débouchage canalisation</a>
-          <a class="footer-link" href="#">Chauffage – dépannage & installation</a>
-          <a class="footer-link" href="#">Chauffe-eau – entretien & pose</a>
-          <a class="footer-link" href="#">Plomberie neuve & rénovation</a>
-        </div>
-        <div>
-          <<h4>Newsletter</h4>
-<p>Restez informé de nos offres et conseils plomberie.</p>
+      </div>
+      <div>
+        <h4>Horaires</h4>
+        <h6>Lundi — Vendredi :</h6>
+        <p class="mb-4">8h00 — 20h00</p>
+        <h6>Samedi — Dimanche :</h6>
+        <p>Urgences uniquement</p>
+      </div>
+      <div>
+        <h4>Interventions</h4>
+        <a class="footer-link" href="services.html#urgence">Urgences plomberie &amp; chauffage</a>
+        <a class="footer-link" href="services.html#fuites">Fuite d'eau – réparation rapide</a>
+        <a class="footer-link" href="services.html#debouchage">Débouchage canalisation</a>
+        <a class="footer-link" href="services.html#chauffage">Chauffage – dépannage &amp; installation</a>
+        <a class="footer-link" href="services.html#chauffe-eau">Chauffe-eau – entretien &amp; pose</a>
+        <a class="footer-link" href="services.html#renovation">Plomberie neuve &amp; rénovation</a>
+      </div>
+      <div>
+        <h4>Newsletter</h4>
+        <p>Restez informé de nos offres et conseils plomberie.</p>
+        <form id="newsletter-form" class="newsletter-wrap">
+          <input type="email" name="email" placeholder="Votre email" required>
+          <button type="submit">S'inscrire</button>
+        </form>
+        <p id="newsletter-message" style="display:none; margin-top:10px;"></p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <span>© 2026 Aquapro Plombier. Tous droits réservés.</span>
+      <span>Site conçu et administré par <a href="https://cmd-solutions.fr" target="_blank">CMD Solutions</a></span>
+      <span><a href="mentions-legales.html" target="_blank">Mentions légales</a> · <a href="politique-de-confidentialite.html" target="_blank">Politique de confidentialité</a></span>
+    </div>
+  </div>
+</footer>
 
-<form id="newsletter-form" class="newsletter-wrap">
-  <input 
-    type="email" 
-    name="email" 
-    placeholder="Votre email" 
-    required
-  >
-  
-  <button type="submit">S'inscrire</button>
-</form>
-
-<p id="newsletter-message" style="display:none; margin-top:10px;"></p>
+<a href="#" class="back-to-top" id="back-to-top"><i class="fa fa-arrow-up"></i></a>
 
 <script>
-  const form = document.getElementById('newsletter-form');
-  const message = document.getElementById('newsletter-message');
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const data = new FormData(form);
-
-    fetch("https://formspree.io/f/maqagqjp", {
-      method: "POST",
-      body: data,
-      headers: {
-        'Accept': 'application/json'
-      }
-    })
-    .then(response => {
-      if (response.ok) {
-        message.style.display = "block";
-        message.style.color = "green";
-        message.textContent = "Merci pour votre inscription !";
-        form.reset();
-      } else {
-        message.style.display = "block";
-        message.style.color = "red";
-        message.textContent = "Une erreur est survenue. Réessayez.";
-      }
-    })
-    .catch(() => {
-      message.style.display = "block";
-      message.style.color = "red";
-      message.textContent = "Problème de connexion.";
-    });
+  document.getElementById('burger').addEventListener('click', () => {
+    document.getElementById('nav-menu').classList.toggle('open');
   });
+  window.addEventListener('scroll', () => {
+    document.getElementById('back-to-top').classList.toggle('visible', window.scrollY > 300);
+  });
+  const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:.1});
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  const nlForm = document.getElementById('newsletter-form');
+  const nlMsg = document.getElementById('newsletter-message');
+  if (nlForm) {
+    nlForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      fetch("https://formspree.io/f/maqagqjp", { method:"POST", body:new FormData(nlForm), headers:{'Accept':'application/json'} })
+        .then(r => { nlMsg.style.display='block'; nlMsg.style.color= r.ok ? 'green' : 'red'; nlMsg.textContent= r.ok ? 'Merci pour votre inscription !' : 'Une erreur est survenue.'; if(r.ok) nlForm.reset(); })
+        .catch(() => { nlMsg.style.display='block'; nlMsg.style.color='red'; nlMsg.textContent='Problème de connexion.'; });
+    });
+  }
 </script>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="container footer-bottom-inner">
-        <span>© 2026 Aquapro Plombier. Tous droits réservés.</span>
-        <span>
-          Site conçu et administré par
-          <a href="https://cmd-solutions.fr" target="_blank">CMD Solutions</a>
-        </span>
-        <span>
-          <a href="mentions-legales.html" target="_blank">Mentions légales</a>
-          ·
-          <a href="politique-de-confidentialite.html" target="_blank">Politique de confidentialité</a>
-        </span>
-      </div>
-    </div>
-  </footer>
-
-  <a href="#" class="back-to-top" id="back-to-top"><i class="fa fa-arrow-up"></i></a>
-
-  <script src="main.js"></script>
 </body>
 </html>

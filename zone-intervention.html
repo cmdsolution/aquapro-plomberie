@@ -12,49 +12,252 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <style>
-    .zone-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 48px; }
-    @media(max-width:768px){ .zone-grid { grid-template-columns: 1fr 1fr; } }
-    @media(max-width:480px){ .zone-grid { grid-template-columns: 1fr; } }
+
+    /* ── ZONE INTRO SPLIT ── */
+    .zone-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 400px;
+    }
+    @media(max-width:768px){ .zone-split { grid-template-columns: 1fr; } }
+    .zone-split-img {
+      position: relative;
+      overflow: hidden;
+    }
+    .zone-split-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .zone-split-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(47,102,198,.5) 0%, rgba(10,20,55,.3) 100%);
+    }
+    .zone-split-img .split-badge {
+      position: absolute;
+      bottom: 28px;
+      left: 28px;
+      background: var(--secondary);
+      color: #fff;
+      padding: 10px 20px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: .88rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .zone-split-body {
+      background: var(--primary);
+      padding: 60px 52px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    @media(max-width:900px){ .zone-split-body { padding: 40px 28px; } }
+    .zone-split-body .label-upper { color: rgba(255,255,255,.6); }
+    .zone-split-body h2 { color: #fff; font-size: clamp(1.5rem, 2.5vw, 2.1rem); margin-bottom: 16px; }
+    .zone-split-body p { color: rgba(255,255,255,.8); font-size: .94rem; line-height: 1.75; margin-bottom: 24px; }
+    .zone-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
+    .zone-stat { background: rgba(255,255,255,.1); padding: 16px 18px; border-left: 3px solid var(--secondary); }
+    .zone-stat .num { font-family: 'Outfit', sans-serif; font-size: 1.9rem; font-weight: 800; color: #fff; line-height: 1; }
+    .zone-stat .num span { color: var(--secondary); }
+    .zone-stat p { color: rgba(255,255,255,.7); font-size: .8rem; margin: 4px 0 0; }
+
+    /* ── ZONE CARDS ── */
+    .zone-section { padding: 80px 0; }
+    .zone-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    @media(max-width:900px){ .zone-grid { grid-template-columns: 1fr 1fr; } }
+    @media(max-width:500px){ .zone-grid { grid-template-columns: 1fr; } }
+
     .zone-card {
-      background: var(--light, #f0f4fc);
-      border: 1px solid var(--border, #dde5f5);
+      background: #fff;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: .3s;
+      display: flex;
+      flex-direction: column;
+    }
+    .zone-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(47,102,198,.13);
+    }
+    .zone-card-header {
+      background: var(--light);
+      padding: 20px 22px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .zone-card-header .dept-icon {
+      width: 46px;
+      height: 46px;
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      flex-shrink: 0;
+      font-size: 1.1rem;
+    }
+    .zone-card-header .dept {
+      font-family: 'Outfit', sans-serif;
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--secondary);
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .zone-card-header h3 {
+      font-size: .98rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+    }
+    .zone-card-body {
+      padding: 18px 22px 22px;
+      flex: 1;
+    }
+    .zone-card-body ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px 10px;
+    }
+    .zone-card-body ul li {
+      font-size: .82rem;
+      color: var(--grey);
+      padding: 4px 0;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      border-bottom: 1px solid #f0f4fc;
+    }
+    .zone-card-body ul li::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      background: var(--primary);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* Contact card — special */
+    .zone-card-cta {
+      background: linear-gradient(135deg, var(--primary) 0%, #1e4fa0 100%);
+      border-color: var(--primary);
+      padding: 32px 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 14px;
+    }
+    .zone-card-cta .dept-label {
+      font-family: 'Outfit', sans-serif;
+      font-size: .72rem;
+      font-weight: 700;
+      color: rgba(255,255,255,.6);
+      text-transform: uppercase;
+      letter-spacing: .07em;
+    }
+    .zone-card-cta h3 { color: #fff; font-size: 1.15rem; margin: 0; }
+    .zone-card-cta p { color: rgba(255,255,255,.75); font-size: .86rem; line-height: 1.6; margin: 0; }
+    .btn-zone-call {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff;
+      color: var(--primary);
+      padding: 12px 20px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: .9rem;
+      transition: .3s;
+      margin-top: 4px;
+      width: fit-content;
+    }
+    .btn-zone-call:hover { background: var(--secondary); color: #fff; }
+
+    /* ── MAP SECTION ── */
+    .zone-map-section {
+      background: var(--light);
+      padding: 72px 0;
+    }
+    .zone-map-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 48px;
+      align-items: center;
+    }
+    @media(max-width:900px){ .zone-map-inner { grid-template-columns: 1fr; } }
+    .zone-map-info h2 { font-size: clamp(1.4rem, 2.5vw, 2rem); margin-bottom: 14px; }
+    .zone-map-info p { color: var(--grey); font-size: .93rem; line-height: 1.7; margin-bottom: 20px; }
+    .zone-highlights { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+    .zh-item { display: flex; align-items: center; gap: 12px; font-size: .9rem; color: var(--dark); }
+    .zh-icon { width: 38px; height: 38px; background: var(--primary); display: flex; align-items: center; justify-content: center; color: #fff; flex-shrink: 0; font-size: .9rem; }
+    .zone-map-frame {
       border-radius: 4px;
-      padding: 28px 24px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,.12);
+      border: 1px solid var(--border);
+    }
+
+    /* ── CTA BANNER ── */
+    .zone-cta-banner {
+      background: linear-gradient(rgba(10,20,50,.85), rgba(10,20,50,.85)),
+        url('https://images.unsplash.com/photo-1504309092620-4d0ec726efa4?w=1400&auto=format&fit=crop&q=80') center/cover no-repeat;
+      padding: 80px 0;
+      text-align: center;
+    }
+    .zone-cta-banner h2 { color: #fff; font-size: clamp(1.5rem, 3vw, 2.3rem); margin-bottom: 14px; }
+    .zone-cta-banner p { color: rgba(255,255,255,.78); font-size: .98rem; margin-bottom: 32px; }
+    .cta-btn-group { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-cta-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff;
+      color: var(--primary);
+      padding: 15px 32px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: .95rem;
       transition: .3s;
     }
-    .zone-card:hover { border-color: #2f66c6; box-shadow: 0 4px 20px rgba(47,102,198,.1); transform: translateY(-3px); }
-    .zone-card h3 { font-family: 'Outfit', sans-serif; font-size: 1.1rem; margin-bottom: 6px; color: #17224d; }
-    .zone-card .dept { font-size: .8rem; font-weight: 700; color: #2f66c6; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 12px; display: block; }
-    .zone-card ul { list-style: none; padding: 0; margin: 0; }
-    .zone-card ul li { font-size: .86rem; color: #64748b; padding: 3px 0; border-bottom: 1px solid #eef1f8; }
-    .zone-card ul li:last-child { border: none; }
-    .zone-card ul li::before { content: '→ '; color: #2f66c6; font-weight: 700; }
-    .zone-intro { max-width: 720px; margin: 0 auto 16px; text-align: center; }
-    .zone-intro p { color: #64748b; font-size: .98rem; line-height: 1.7; }
-    .zone-map-wrap {
-      margin-top: 56px;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 4px 24px rgba(0,0,0,.1);
-      border: 1px solid #dde5f5;
-    }
-    .zone-cta {
-      background: #2f66c6;
+    .btn-cta-white:hover { background: var(--secondary); color: #fff; transform: translateY(-2px); }
+    .btn-cta-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
       color: #fff;
-      padding: 56px 0;
-      text-align: center;
-      margin-top: 56px;
+      border: 2px solid rgba(255,255,255,.5);
+      padding: 13px 30px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: .95rem;
+      transition: .3s;
     }
-    .zone-cta h2 { font-family: 'Outfit', sans-serif; font-size: 1.9rem; margin-bottom: 12px; }
-    .zone-cta p { opacity: .85; margin-bottom: 28px; font-size: .98rem; }
-    .btn-white { display: inline-block; background: #fff; color: #2f66c6; padding: 14px 36px; font-family: 'Outfit', sans-serif; font-weight: 700; font-size: .95rem; transition: .3s; margin: 0 8px; }
-    .btn-white:hover { background: #e8f0fd; transform: translateY(-2px); }
-    .btn-white-outline { display: inline-block; background: transparent; color: #fff; border: 2px solid rgba(255,255,255,.6); padding: 12px 34px; font-family: 'Outfit', sans-serif; font-weight: 700; font-size: .95rem; transition: .3s; margin: 0 8px; }
-    .btn-white-outline:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+    .btn-cta-outline:hover { border-color: #fff; background: rgba(255,255,255,.1); transform: translateY(-2px); }
   </style>
 </head>
 <body>
 
+<!-- TOPBAR -->
 <div class="topbar">
   <div class="container topbar-inner">
     <div class="logo"><a href="index.html"><img src="img/logo.webp" alt="Aquapro Plombier"></a><div class="logo-tagline">Plomberie - Chauffage - Rénovation</div></div>
@@ -71,17 +274,17 @@
   </div>
 </div>
 
+<!-- NAVBAR -->
 <nav class="navbar" id="navbar">
   <div class="container navbar-inner">
-    <a href="index.html" class="nav-logo">Aquapro Plombier</a>
+    <a href="https://cmdsolution.github.io/aquapro-plomberie/index.html" class="nav-logo">Aquapro Plombier</a>
     <button class="burger" id="burger"><i class="fa fa-bars"></i></button>
     <div class="nav-menu" id="nav-menu">
-      <a href="index.html" class="nav-link">Accueil</a>
-      <a href="about.html" class="nav-link">À propos</a>
-      <a href="services.html" class="nav-link">Services</a>
-      <a href="zone-intervention.html" class="nav-link active">Zone d'intervention</a>
-      <a href="realisations.html" class="nav-link">Réalisations</a>
-      <a href="contact.html" class="nav-link">Contact</a>
+      <a href="https://cmdsolution.github.io/aquapro-plomberie/index.html" class="nav-link">Accueil</a>
+      <a href="https://cmdsolution.github.io/aquapro-plomberie/about.html" class="nav-link">À propos</a>
+      <a href="https://cmdsolution.github.io/aquapro-plomberie/services.html" class="nav-link">Services</a>
+      <a href="https://cmdsolution.github.io/aquapro-plomberie/zone-intervention.html" class="nav-link active">Zone d'intervention</a>
+      <a href="https://cmdsolution.github.io/aquapro-plomberie/contact.html" class="nav-link">Contact</a>
     </div>
     <div class="nav-phone">
       <div class="nav-phone-icon"><i class="fa fa-phone-alt"></i></div>
@@ -90,129 +293,218 @@
   </div>
 </nav>
 
-<div class="page-hero">
+<!-- HERO -->
+<div class="page-hero" style="background-image: linear-gradient(rgba(10,20,55,.78), rgba(10,20,55,.78)), url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1400&auto=format&fit=crop&q=80'); background-size:cover; background-position:center;">
   <div class="container">
     <h1>Zone d'intervention</h1>
-    <nav class="breadcrumb"><a href="index.html">Accueil</a><span>/</span><span>Zone d'intervention</span></nav>
+    <nav class="breadcrumb">
+      <a href="https://cmdsolution.github.io/aquapro-plomberie/index.html">Accueil</a>
+      <span>/</span>
+      <span>Zone d'intervention</span>
+    </nav>
   </div>
 </div>
 
-<section class="section-pad">
+<!-- INTRO SPLIT -->
+<div class="zone-split">
+  <div class="zone-split-img">
+    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop&q=80" alt="Île-de-France vue aérienne">
+    <div class="zone-split-img-overlay"></div>
+    <div class="split-badge"><i class="fa fa-map-marker-alt"></i> Basés à Neuilly Plaisance, 93360</div>
+  </div>
+  <div class="zone-split-body fade-in">
+    <span class="label-upper">Nos secteurs</span>
+    <h2>Nous intervenons dans toute l'Île-de-France</h2>
+    <p>Basés à Neuilly Plaisance (93360), nous intervenons rapidement dans tout l'est parisien et la petite et grande couronne. Notre priorité : être chez vous le plus vite possible.</p>
+    <div class="zone-stats">
+      <div class="zone-stat"><div class="num">&lt;2<span>h</span></div><p>Délai d'intervention urgence</p></div>
+      <div class="zone-stat"><div class="num">5<span>+</span></div><p>Départements couverts</p></div>
+      <div class="zone-stat"><div class="num">7<span>j/7</span></div><p>Astreinte disponible</p></div>
+      <div class="zone-stat"><div class="num">30<span>min</span></div><p>Réponse téléphonique</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ZONE CARDS -->
+<section class="zone-section">
   <div class="container">
-    <div class="zone-intro">
-      <h6 class="label-upper">Nos secteurs</h6>
-      <h2 class="section-title">Nous intervenons dans toutee l'Île-de-France</h2>
-      <p>Basés à Neuilly Plaisance (93360), nous intervienons rapidement dans tout l'est parisien et la petite et grande couronne. Délai d'intervention moyen : moins de 2h pour les urgences.</p>
+    <div class="text-center" style="max-width:680px;margin:0 auto;">
+      <span class="label-upper">Nos secteurs d'intervention</span>
+      <h2 class="section-title">Communes desservies</h2>
+      <p class="text-muted">Retrouvez ci-dessous les principales villes où nous intervenons. Vous ne trouvez pas votre ville ? Appelez-nous, nous ferons notre possible.</p>
     </div>
 
     <div class="zone-grid">
 
+      <!-- 93 -->
       <div class="zone-card fade-in">
-        <span class="dept">Seine-Saint-Denis — 93</span>
-        <h3>Notre secteur principal</h3>
-        <ul>
-          <li>Neuilly Plaisance</li>
-          <li>Neuilly-sur-Marne</li>
-          <li>Noisy-le-Grand</li>
-          <li>Rosny-sous-Bois</li>
-          <li>Vincennes</li>
-          <li>Montreuil</li>
-          <li>Bobigny</li>
-          <li>Saint-Denis</li>
-          <li>Pantin</li>
-          <li>Noisy-le-Sec</li>
-        </ul>
+        <div class="zone-card-header">
+          <div class="dept-icon"><i class="fa fa-star"></i></div>
+          <div>
+            <span class="dept">Seine-Saint-Denis — 93</span>
+            <h3>Notre secteur principal</h3>
+          </div>
+        </div>
+        <div class="zone-card-body">
+          <ul>
+            <li>Neuilly Plaisance</li>
+            <li>Neuilly-sur-Marne</li>
+            <li>Noisy-le-Grand</li>
+            <li>Rosny-sous-Bois</li>
+            <li>Montreuil</li>
+            <li>Bobigny</li>
+            <li>Saint-Denis</li>
+            <li>Pantin</li>
+            <li>Noisy-le-Sec</li>
+            <li>Vincennes</li>
+          </ul>
+        </div>
       </div>
 
+      <!-- 94 -->
       <div class="zone-card fade-in">
-        <span class="dept">Val-de-Marne — 94</span>
-        <h3>Est parisien</h3>
-        <ul>
-          <li>Créteil</li>
-          <li>Vincennes</li>
-          <li>Saint-Maur-des-Fossés</li>
-          <li>Vitry-sur-Seine</li>
-          <li>Ivry-sur-Seine</li>
-          <li>Alfortville</li>
-          <li>Charenton-le-Pont</li>
-          <li>Fontenay-sous-Bois</li>
-          <li>Champigny-sur-Marne</li>
-          <li>Maisons-Alfort</li>
-        </ul>
+        <div class="zone-card-header">
+          <div class="dept-icon"><i class="fa fa-map-marker-alt"></i></div>
+          <div>
+            <span class="dept">Val-de-Marne — 94</span>
+            <h3>Est parisien</h3>
+          </div>
+        </div>
+        <div class="zone-card-body">
+          <ul>
+            <li>Créteil</li>
+            <li>Vincennes</li>
+            <li>Saint-Maur-des-Fossés</li>
+            <li>Vitry-sur-Seine</li>
+            <li>Ivry-sur-Seine</li>
+            <li>Alfortville</li>
+            <li>Charenton-le-Pont</li>
+            <li>Fontenay-sous-Bois</li>
+            <li>Champigny-sur-Marne</li>
+            <li>Maisons-Alfort</li>
+          </ul>
+        </div>
       </div>
 
+      <!-- Paris -->
       <div class="zone-card fade-in">
-        <span class="dept">Paris</span>
-        <h3>Paris intra-muros</h3>
-        <ul>
-          <li>Paris 11e</li>
-          <li>Paris 12e</li>
-          <li>Paris 13e</li>
-          <li>Paris 14e</li>
-          <li>Paris 19e</li>
-          <li>Paris 20e</li>
-          <li>Paris 3e</li>
-          <li>Paris 4e</li>
-          <li>Paris 10e</li>
-          <li>Paris 18e</li>
-        </ul>
+        <div class="zone-card-header">
+          <div class="dept-icon"><i class="fa fa-city"></i></div>
+          <div>
+            <span class="dept">Paris</span>
+            <h3>Paris intra-muros</h3>
+          </div>
+        </div>
+        <div class="zone-card-body">
+          <ul>
+            <li>Paris 11e</li>
+            <li>Paris 12e</li>
+            <li>Paris 13e</li>
+            <li>Paris 14e</li>
+            <li>Paris 19e</li>
+            <li>Paris 20e</li>
+            <li>Paris 3e</li>
+            <li>Paris 4e</li>
+            <li>Paris 10e</li>
+            <li>Paris 18e</li>
+          </ul>
+        </div>
       </div>
 
+      <!-- 77 -->
       <div class="zone-card fade-in">
-        <span class="dept">Seine-et-Marne — 77</span>
-        <h3>Proche banlieue est</h3>
-        <ul>
-          <li>Chelles</li>
-          <li>Lagny-sur-Marne</li>
-          <li>Torcy</li>
-          <li>Meaux</li>
-          <li>Noisiel</li>
-          <li>Lognes</li>
-          <li>Bussy-Saint-Georges</li>
-          <li>Val d'Europe</li>
-        </ul>
+        <div class="zone-card-header">
+          <div class="dept-icon"><i class="fa fa-tree"></i></div>
+          <div>
+            <span class="dept">Seine-et-Marne — 77</span>
+            <h3>Proche banlieue est</h3>
+          </div>
+        </div>
+        <div class="zone-card-body">
+          <ul>
+            <li>Chelles</li>
+            <li>Lagny-sur-Marne</li>
+            <li>Torcy</li>
+            <li>Meaux</li>
+            <li>Noisiel</li>
+            <li>Lognes</li>
+            <li>Bussy-Saint-Georges</li>
+            <li>Val d'Europe</li>
+          </ul>
+        </div>
       </div>
 
+      <!-- 92 -->
       <div class="zone-card fade-in">
-        <span class="dept">Hauts-de-Seine — 92</span>
-        <h3>Ouest parisien</h3>
-        <ul>
-          <li>Boulogne-Billancourt</li>
-          <li>Neuilly-sur-Seine</li>
-          <li>Levallois-Perret</li>
-          <li>Nanterre</li>
-          <li>Issy-les-Moulineaux</li>
-          <li>Courbevoie</li>
-          <li>Clichy</li>
-        </ul>
+        <div class="zone-card-header">
+          <div class="dept-icon"><i class="fa fa-building"></i></div>
+          <div>
+            <span class="dept">Hauts-de-Seine — 92</span>
+            <h3>Ouest parisien</h3>
+          </div>
+        </div>
+        <div class="zone-card-body">
+          <ul>
+            <li>Boulogne-Billancourt</li>
+            <li>Neuilly-sur-Seine</li>
+            <li>Levallois-Perret</li>
+            <li>Nanterre</li>
+            <li>Issy-les-Moulineaux</li>
+            <li>Courbevoie</li>
+            <li>Clichy</li>
+          </ul>
+        </div>
       </div>
 
-      <div class="zone-card fade-in" style="background:#2f66c6;border-color:#2f66c6;">
-        <span class="dept" style="color:rgba(255,255,255,.7);">Vous n'êtes pas sûr ?</span>
-        <h3 style="color:#fff;margin-bottom:12px;">Contactez-nous</h3>
-        <p style="color:rgba(255,255,255,.8);font-size:.88rem;line-height:1.6;margin-bottom:20px;">Appelez-nous pour vérifier notre disponibilité dans votre secteur. Nous faisons notre possible pour vous dépanner rapidement.</p>
-        <a href="tel:0677218787" style="display:inline-block;background:#fff;color:#2f66c6;padding:10px 20px;font-family:'Outfit',sans-serif;font-weight:700;font-size:.9rem;">
-          <i class="fa fa-phone-alt" style="margin-right:8px;"></i> 06.77.21.87.87
+      <!-- Contact CTA card -->
+      <div class="zone-card zone-card-cta fade-in">
+        <span class="dept-label">Votre ville n'est pas listée ?</span>
+        <h3>Contactez-nous directement</h3>
+        <p>Appelez-nous pour vérifier notre disponibilité dans votre secteur. Nous faisons notre possible pour vous dépanner rapidement.</p>
+        <a href="tel:0677218787" class="btn-zone-call">
+          <i class="fa fa-phone-alt"></i> 06.77.21.87.87
         </a>
       </div>
 
     </div>
-
-    <div class="zone-map-wrap">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d167557.82!2d2.4565!3d48.8588!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e60d7b0c2f6f89%3A0x4d9c33e7e0c7a97b!2sNeuilly-Plaisance%2C%2093360!5e0!3m2!1sfr!2sfr!4v1714000000000"
-        width="100%" height="400" style="border:0;display:block;" allowfullscreen="" loading="lazy">
-      </iframe>
-    </div>
   </div>
 </section>
 
-<div class="zone-cta">
+<!-- MAP SECTION -->
+<div class="zone-map-section">
+  <div class="container">
+    <div class="zone-map-inner">
+      <div class="zone-map-info fade-in">
+        <span class="label-upper">Localisation</span>
+        <h2 class="section-title">Notre base d'intervention</h2>
+        <p>Depuis notre bureau de Neuilly Plaisance, nous couvrons efficacement l'ensemble de l'Île-de-France. Nos techniciens sont mobiles et réactifs.</p>
+        <div class="zone-highlights">
+          <div class="zh-item"><div class="zh-icon"><i class="fa fa-map-marker-alt"></i></div> 15 ter Chemin de Meaux, 93360 Neuilly Plaisance</div>
+          <div class="zh-item"><div class="zh-icon"><i class="fa fa-clock"></i></div> Lun–Ven 8h–20h · Urgences 7j/7</div>
+          <div class="zh-item"><div class="zh-icon"><i class="fa fa-phone-alt"></i></div> 06.77.21.87.87</div>
+          <div class="zh-item"><div class="zh-icon"><i class="fa fa-envelope"></i></div> contact@aquaproplombier.fr</div>
+        </div>
+        <a href="https://cmdsolution.github.io/aquapro-plomberie/contact.html" class="btn-primary">Prendre contact</a>
+      </div>
+      <div class="zone-map-frame fade-in">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d167557.82!2d2.4565!3d48.8588!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e60d7b0c2f6f89%3A0x4d9c33e7e0c7a97b!2sNeuilly-Plaisance%2C%2093360!5e0!3m2!1sfr!2sfr!4v1714000000000"
+          width="100%" height="420" style="border:0;display:block;" allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA BANNER -->
+<div class="zone-cta-banner">
   <div class="container">
     <h2>Besoin d'une intervention dans votre secteur ?</h2>
     <p>Appelez-nous ou réservez en ligne — réponse sous 30 minutes en semaine.</p>
-    <a href="tel:0677218787" class="btn-white"><i class="fa fa-phone-alt" style="margin-right:8px;"></i> 06.77.21.87.87</a>
-    <a href="booking.html" class="btn-white-outline">Réserver en ligne</a>
+    <div class="cta-btn-group">
+      <a href="tel:0677218787" class="btn-cta-white"><i class="fa fa-phone-alt"></i> 06.77.21.87.87</a>
+      <a href="https://cmdsolution.github.io/aquapro-plomberie/contact.html" class="btn-cta-outline"><i class="fa fa-calendar-alt"></i> Réserver en ligne</a>
+    </div>
   </div>
 </div>
 
@@ -222,7 +514,7 @@
     <div class="footer-grid">
       <div>
         <h4>Adresse</h4>
-        <p><i class="fa fa-map-marker-alt"></i> 15 ter Chemin de Meaux<br> 93360 Neuilly Plaisance</p>
+        <p><i class="fa fa-map-marker-alt"></i> 15 ter Chemin de Meaux<br>93360 Neuilly Plaisance</p>
         <p><i class="fa fa-phone-alt"></i> 06.77.21.87.87</p>
         <p><i class="fa fa-envelope"></i> contact@aquaproplombier.fr</p>
         <div class="footer-social">
@@ -241,116 +533,54 @@
       </div>
       <div>
         <h4>Interventions</h4>
-
-<a class="footer-link" href="#">Urgences plomberie & chauffage</a>
-<a class="footer-link" href="#">Fuite d’eau – réparation rapide</a>
-<a class="footer-link" href="#">Débouchage canalisation</a>
-<a class="footer-link" href="#">Chauffage – dépannage & installation</a>
-<a class="footer-link" href="#">Chauffe-eau – entretien & pose</a>
-<a class="footer-link" href="#">Plomberie neuve & rénovation</a>
+        <a class="footer-link" href="services.html#urgence">Urgences plomberie &amp; chauffage</a>
+        <a class="footer-link" href="services.html#fuites">Fuite d'eau – réparation rapide</a>
+        <a class="footer-link" href="services.html#debouchage">Débouchage canalisation</a>
+        <a class="footer-link" href="services.html#chauffage">Chauffage – dépannage &amp; installation</a>
+        <a class="footer-link" href="services.html#chauffe-eau">Chauffe-eau – entretien &amp; pose</a>
+        <a class="footer-link" href="services.html#renovation">Plomberie neuve &amp; rénovation</a>
       </div>
       <div>
-        <<h4>Newsletter</h4>
-<p>Restez informé de nos offres et conseils plomberie.</p>
-
-<form id="newsletter-form" class="newsletter-wrap">
-  <input 
-    type="email" 
-    name="email" 
-    placeholder="Votre email" 
-    required
-  >
-  
-  <button type="submit">S'inscrire</button>
-</form>
-
-<p id="newsletter-message" style="display:none; margin-top:10px;"></p>
-
-<script>
-  const form = document.getElementById('newsletter-form');
-  const message = document.getElementById('newsletter-message');
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const data = new FormData(form);
-
-    fetch("https://formspree.io/f/maqagqjp", {
-      method: "POST",
-      body: data,
-      headers: {
-        'Accept': 'application/json'
-      }
-    })
-    .then(response => {
-      if (response.ok) {
-        message.style.display = "block";
-        message.style.color = "green";
-        message.textContent = "Merci pour votre inscription !";
-        form.reset();
-      } else {
-        message.style.display = "block";
-        message.style.color = "red";
-        message.textContent = "Une erreur est survenue. Réessayez.";
-      }
-    })
-    .catch(() => {
-      message.style.display = "block";
-      message.style.color = "red";
-      message.textContent = "Problème de connexion.";
-    });
-  });
-</script>
-        </div>
+        <h4>Newsletter</h4>
+        <p>Restez informé de nos offres et conseils plomberie.</p>
+        <form id="newsletter-form" class="newsletter-wrap">
+          <input type="email" name="email" placeholder="Votre email" required>
+          <button type="submit">S'inscrire</button>
+        </form>
+        <p id="newsletter-message" style="display:none; margin-top:10px;"></p>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
     <div class="container footer-bottom-inner">
       <span>© 2026 Aquapro Plombier. Tous droits réservés.</span>
-
-    <span>
-      Site conçu et administré par
-      <a href="https://cmd-solutions.fr" target="_blank">CMD Solutions</a>
-    </span>
-
-    <span>
-      <a href="mentions-legales.html" target="_blank">Mentions légales</a>
-      ·
-      <a href="politique-de-confidentialite.html" target="_blank">Politique de confidentialité</a>
-    </span>
+      <span>Site conçu et administré par <a href="https://cmd-solutions.fr" target="_blank">CMD Solutions</a></span>
+      <span><a href="mentions-legales.html" target="_blank">Mentions légales</a> · <a href="politique-de-confidentialite.html" target="_blank">Politique de confidentialité</a></span>
     </div>
   </div>
 </footer>
 
 <a href="#" class="back-to-top" id="back-to-top"><i class="fa fa-arrow-up"></i></a>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="main.js"></script>
 <script>
-  new Swiper('.myTestiSwiper', {
-    loop: true,
-    autoplay: {
-      delay: 4000,
-      disableOnInteraction: false,
-    },
-    speed: 700,
-    slidesPerView: 1,
-    spaceBetween: 24,
-    centeredSlides: true,
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    breakpoints: {
-      600: { slidesPerView: 2 },
-      992: { slidesPerView: 3 },
-    }
+  document.getElementById('burger').addEventListener('click', () => {
+    document.getElementById('nav-menu').classList.toggle('open');
   });
+  window.addEventListener('scroll', () => {
+    document.getElementById('back-to-top').classList.toggle('visible', window.scrollY > 300);
+  });
+  const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:.12});
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  const nlForm = document.getElementById('newsletter-form');
+  const nlMsg = document.getElementById('newsletter-message');
+  if (nlForm) {
+    nlForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      fetch("https://formspree.io/f/maqagqjp", { method:"POST", body:new FormData(nlForm), headers:{'Accept':'application/json'} })
+        .then(r => { nlMsg.style.display='block'; nlMsg.style.color= r.ok ? 'green' : 'red'; nlMsg.textContent= r.ok ? 'Merci pour votre inscription !' : 'Une erreur est survenue.'; if(r.ok) nlForm.reset(); })
+        .catch(() => { nlMsg.style.display='block'; nlMsg.style.color='red'; nlMsg.textContent='Problème de connexion.'; });
+    });
+  }
 </script>
 </body>
 </html>
