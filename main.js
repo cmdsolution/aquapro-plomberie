@@ -159,7 +159,7 @@
     "horaires": "Notre standard est ouvert du lundi au vendredi de 8h à 20h. Les interventions d'urgence peuvent être programmées 7j/7.",
     "contact": "Vous pouvez nous contacter par téléphone au 06 77 21 87 87, par email ou via notre formulaire de contact.",
     "paiement": "Nous acceptons les espèces, chèques et virements bancaires. Paiement à la fin de l'intervention.",
-    "zone": "Nous intervenons dans toute la région parisienne (Paris, petite couronne, et jusqu'à 30km autour de Neuilly Plaisance).",
+    "zone": "Nous intervenons dans toute la région parisienne (Paris, petite couronne, et jusqu'à 50km autour de Neuilly Plaisance).",
     "merci": "Avec plaisir ! N'hésitez pas si vous avez d'autres questions. 😊"
   };
 
